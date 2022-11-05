@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Software2
 {
@@ -30,12 +31,18 @@ namespace Software2
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+           
         }
-
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             textBoxUser.Text = "test"; //FIXME 
             textBoxPass.Text = "test";
+            using (StreamWriter txt = new StreamWriter("login.txt", true))
+            {
+                string time = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+                txt.WriteLine(string.Format("Login Attempt {0}--{1}:{2} {3}:{4}", time, labelUsername.Text, textBoxUser.Text, labelPassword.Text, textBoxPass.Text));
+
+            }
             if (textBoxUser.Text=="test" && textBoxPass.Text=="test")
             {
                 new FormControl().Show();
@@ -43,6 +50,7 @@ namespace Software2
             }
             else
             {
+              
                 MessageBox.Show("The username or password you entered is incorrect");
             }
             
