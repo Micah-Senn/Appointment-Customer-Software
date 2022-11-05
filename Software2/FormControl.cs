@@ -38,7 +38,33 @@ namespace Software2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            new Calender().Show();
+            
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            new SchedulingReport().Show();
+        }
+
+        private void buttonModCus_Click(object sender, EventArgs e)
+        {
+            new ModCustomer().Show();
+        }
+
+        private void buttonAddCus_Click(object sender, EventArgs e)
+        {
+            new AddCustomer().Show();
+        }
+
+        private void buttonType_Click(object sender, EventArgs e)
+        {
+            new TypeReport().Show();
+        }
+
+        private void buttonCusReport_Click(object sender, EventArgs e)
+        {
+            new CustomerReport().Show();
         }
     }
 }

@@ -232,6 +232,7 @@ namespace Software2
             // 
             // comboBoxCity
             // 
+            this.comboBoxCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCity.FormattingEnabled = true;
             this.comboBoxCity.Location = new System.Drawing.Point(156, 187);
             this.comboBoxCity.Name = "comboBoxCity";
@@ -240,6 +241,7 @@ namespace Software2
             // 
             // comboBoxActive
             // 
+            this.comboBoxActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActive.FormattingEnabled = true;
             this.comboBoxActive.Location = new System.Drawing.Point(156, 320);
             this.comboBoxActive.Name = "comboBoxActive";

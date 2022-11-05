@@ -34,7 +34,9 @@ namespace Software2
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (textBoxUser.Text=="username" && textBoxPass.Text=="password")
+            textBoxUser.Text = "test"; //FIXME 
+            textBoxPass.Text = "test";
+            if (textBoxUser.Text=="test" && textBoxPass.Text=="test")
             {
                 new FormControl().Show();
                 this.Hide();

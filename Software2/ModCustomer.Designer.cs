@@ -54,6 +54,7 @@ namespace Software2
             // 
             // comboBoxActive
             // 
+            this.comboBoxActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActive.FormattingEnabled = true;
             this.comboBoxActive.Location = new System.Drawing.Point(146, 322);
             this.comboBoxActive.Name = "comboBoxActive";
@@ -62,6 +63,7 @@ namespace Software2
             // 
             // comboBoxCity
             // 
+            this.comboBoxCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCity.FormattingEnabled = true;
             this.comboBoxCity.Location = new System.Drawing.Point(146, 189);
             this.comboBoxCity.Name = "comboBoxCity";
