@@ -35,5 +35,10 @@ namespace Software2
         {
             new ModAppointment().Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

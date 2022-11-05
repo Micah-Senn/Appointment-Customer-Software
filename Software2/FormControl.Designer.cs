@@ -36,7 +36,7 @@ namespace Software2
             this.buttonAddCus = new System.Windows.Forms.Button();
             this.buttonModCus = new System.Windows.Forms.Button();
             this.buttonDeleteCus = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonCal = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -120,15 +120,16 @@ namespace Software2
             this.buttonDeleteCus.Text = "Delete";
             this.buttonDeleteCus.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // buttonCal
             // 
-            this.button1.Location = new System.Drawing.Point(681, 360);
-            this.button1.Margin = new System.Windows.Forms.Padding(5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 29);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "View Appointments";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonCal.Location = new System.Drawing.Point(681, 360);
+            this.buttonCal.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonCal.Name = "buttonCal";
+            this.buttonCal.Size = new System.Drawing.Size(176, 29);
+            this.buttonCal.TabIndex = 7;
+            this.buttonCal.Text = "View Calender";
+            this.buttonCal.UseVisualStyleBackColor = true;
+            this.buttonCal.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -202,7 +203,7 @@ namespace Software2
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonCal);
             this.Controls.Add(this.buttonDeleteCus);
             this.Controls.Add(this.buttonModCus);
             this.Controls.Add(this.buttonAddCus);
@@ -229,7 +230,7 @@ namespace Software2
         private System.Windows.Forms.Button buttonAddCus;
         private System.Windows.Forms.Button buttonModCus;
         private System.Windows.Forms.Button buttonDeleteCus;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonCal;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
