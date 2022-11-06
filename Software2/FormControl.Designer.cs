@@ -41,11 +41,11 @@ namespace Software2
             this.buttonSchedule = new System.Windows.Forms.Button();
             this.buttonCusReport = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.AppointmentGridView = new System.Windows.Forms.DataGridView();
+            this.CustomersGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AppointmentGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // labelAppointments
@@ -178,25 +178,26 @@ namespace Software2
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.button5_Click);
             // 
-            // dataGridView1
+            // AppointmentGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(72, 69);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(736, 150);
-            this.dataGridView1.TabIndex = 12;
+            this.AppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AppointmentGridView.Location = new System.Drawing.Point(72, 69);
+            this.AppointmentGridView.Margin = new System.Windows.Forms.Padding(5);
+            this.AppointmentGridView.Name = "AppointmentGridView";
+            this.AppointmentGridView.RowTemplate.Height = 25;
+            this.AppointmentGridView.Size = new System.Drawing.Size(736, 150);
+            this.AppointmentGridView.TabIndex = 12;
+            this.AppointmentGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AppointmentGridView_CellContentClick);
             // 
-            // dataGridView2
+            // CustomersGridView
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(72, 341);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(5);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(534, 202);
-            this.dataGridView2.TabIndex = 13;
+            this.CustomersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustomersGridView.Location = new System.Drawing.Point(72, 341);
+            this.CustomersGridView.Margin = new System.Windows.Forms.Padding(5);
+            this.CustomersGridView.Name = "CustomersGridView";
+            this.CustomersGridView.RowTemplate.Height = 25;
+            this.CustomersGridView.Size = new System.Drawing.Size(534, 202);
+            this.CustomersGridView.TabIndex = 13;
             // 
             // label1
             // 
@@ -215,8 +216,8 @@ namespace Software2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 608);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.CustomersGridView);
+            this.Controls.Add(this.AppointmentGridView);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonCusReport);
             this.Controls.Add(this.buttonSchedule);
@@ -232,8 +233,8 @@ namespace Software2
             this.Name = "FormControl";
             this.Text = "Scheduling Software";
             this.Load += new System.EventHandler(this.FormControl_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AppointmentGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,8 +254,8 @@ namespace Software2
         private System.Windows.Forms.Button buttonSchedule;
         private System.Windows.Forms.Button buttonCusReport;
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView AppointmentGridView;
+        private System.Windows.Forms.DataGridView CustomersGridView;
         private System.Windows.Forms.Label label1;
     }
 }

@@ -5,20 +5,48 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Software2
 {
     public partial class FormControl : Form
     {
-        
         public FormControl()
         {
             InitializeComponent();
         }
 
+
         private void FormControl_Load(object sender, EventArgs e)
         {
-           
+             string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+             MySqlConnection con = new MySqlConnection(connectionString);
+            
+            string sqlStringApp = "SELECT * FROM appointment";
+             MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
+             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
+            DataTable dt = new DataTable();
+            adpa.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DateTime y = (DateTime)dt.Rows[i]["start"];
+                dt.Rows[i]["start"] = y.ToLocalTime();
+            }
+            AppointmentGridView.DataSource = dt;
+
+            string sqlStringCus = "SELECT * FROM customer";
+             MySqlCommand cmdc = new MySqlCommand(sqlStringCus, con);
+            MySqlDataAdapter adpc = new MySqlDataAdapter(cmdc);
+            DataTable dt2 = new DataTable();
+            adpc.Fill(dt2);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DateTime y = (DateTime)dt.Rows[i]["CreateDate"];
+                dt2.Rows[i]["CreateDate"] = y.ToLocalTime();
+            }
+            CustomersGridView.DataSource = dt2;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -65,6 +93,11 @@ namespace Software2
         private void buttonCusReport_Click(object sender, EventArgs e)
         {
             new CustomerReport().Show();
+        }
+
+        private void AppointmentGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
