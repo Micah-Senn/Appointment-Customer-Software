@@ -21,12 +21,12 @@ namespace Software2
 
         private void FormControl_Load(object sender, EventArgs e)
         {
-             string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-             MySqlConnection con = new MySqlConnection(connectionString);
-            
-            string sqlStringApp = "SELECT * FROM appointment";
-             MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
-             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
+            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(connectionString);
+
+            string sqlStringApp = "SELECT appointmentId, customerId, userId, title, type, start, end FROM appointment";
+            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
+            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -34,19 +34,12 @@ namespace Software2
                 DateTime y = (DateTime)dt.Rows[i]["start"];
                 dt.Rows[i]["start"] = y.ToLocalTime();
             }
-            AppointmentGridView.DataSource = dt;
+            AppointmentGridView.DataSource = dt;    
+        }
 
-            string sqlStringCus = "SELECT * FROM customer";
-             MySqlCommand cmdc = new MySqlCommand(sqlStringCus, con);
-            MySqlDataAdapter adpc = new MySqlDataAdapter(cmdc);
-            DataTable dt2 = new DataTable();
-            adpc.Fill(dt2);
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DateTime y = (DateTime)dt.Rows[i]["CreateDate"];
-                dt2.Rows[i]["CreateDate"] = y.ToLocalTime();
-            }
-            CustomersGridView.DataSource = dt2;
+        public void Display()
+        {
+            DbCustomer.DisplayCustomer("SELECT customerId, customerName, addressId, active FROM customer", CustomersGridView);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -82,7 +75,8 @@ namespace Software2
 
         private void buttonAddCus_Click(object sender, EventArgs e)
         {
-            new AddCustomer().Show();
+            AddCustomer AddCustomerForm = new AddCustomer(this);
+            AddCustomerForm.Show();
         }
 
         private void buttonType_Click(object sender, EventArgs e)
@@ -98,6 +92,22 @@ namespace Software2
         private void AppointmentGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void FormControl_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FormControl_Shown(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void buttonDeleteCus_Click(object sender, EventArgs e)
+        {
+            DbCustomer.DeleteCustomer(CustomersGridView.CurrentRow.Cells[0].Value.ToString());
+            Display();
         }
     }
 }

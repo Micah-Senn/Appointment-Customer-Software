@@ -19,9 +19,9 @@ namespace Software2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            dbconnection.startConnection();
+           /* dbconnection.startConnection();*/
             Application.Run(new FormLogin());
-            dbconnection.closeConnection();
+            /*dbconnection.closeConnection();*/
         }
     }
 }

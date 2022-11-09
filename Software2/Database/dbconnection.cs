@@ -12,7 +12,7 @@ namespace Software2.Database
         public static MySqlConnection conn = null;
 
 
-        public static void startConnection()
+        /*public static void startConnection()
         {
             try
             {
@@ -44,6 +44,6 @@ namespace Software2.Database
                 MessageBox.Show(ex.Message);
             }
 
-        }
+        }*/
     }
 }

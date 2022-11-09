@@ -122,6 +122,7 @@ namespace Software2
             this.buttonDeleteCus.TabIndex = 6;
             this.buttonDeleteCus.Text = "Delete";
             this.buttonDeleteCus.UseVisualStyleBackColor = true;
+            this.buttonDeleteCus.Click += new System.EventHandler(this.buttonDeleteCus_Click);
             // 
             // buttonCal
             // 
@@ -180,22 +181,38 @@ namespace Software2
             // 
             // AppointmentGridView
             // 
+            this.AppointmentGridView.AllowUserToAddRows = false;
+            this.AppointmentGridView.AllowUserToDeleteRows = false;
+            this.AppointmentGridView.AllowUserToResizeColumns = false;
+            this.AppointmentGridView.AllowUserToResizeRows = false;
+            this.AppointmentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AppointmentGridView.Location = new System.Drawing.Point(72, 69);
             this.AppointmentGridView.Margin = new System.Windows.Forms.Padding(5);
             this.AppointmentGridView.Name = "AppointmentGridView";
+            this.AppointmentGridView.ReadOnly = true;
+            this.AppointmentGridView.RowHeadersVisible = false;
             this.AppointmentGridView.RowTemplate.Height = 25;
+            this.AppointmentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AppointmentGridView.Size = new System.Drawing.Size(736, 150);
             this.AppointmentGridView.TabIndex = 12;
             this.AppointmentGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AppointmentGridView_CellContentClick);
             // 
             // CustomersGridView
             // 
+            this.CustomersGridView.AllowUserToAddRows = false;
+            this.CustomersGridView.AllowUserToDeleteRows = false;
+            this.CustomersGridView.AllowUserToResizeColumns = false;
+            this.CustomersGridView.AllowUserToResizeRows = false;
+            this.CustomersGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.CustomersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomersGridView.Location = new System.Drawing.Point(72, 341);
             this.CustomersGridView.Margin = new System.Windows.Forms.Padding(5);
             this.CustomersGridView.Name = "CustomersGridView";
+            this.CustomersGridView.ReadOnly = true;
+            this.CustomersGridView.RowHeadersVisible = false;
             this.CustomersGridView.RowTemplate.Height = 25;
+            this.CustomersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomersGridView.Size = new System.Drawing.Size(534, 202);
             this.CustomersGridView.TabIndex = 13;
             // 
@@ -232,7 +249,9 @@ namespace Software2
             this.Controls.Add(this.labelAppointments);
             this.Name = "FormControl";
             this.Text = "Scheduling Software";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormControl_FormClosed);
             this.Load += new System.EventHandler(this.FormControl_Load);
+            this.Shown += new System.EventHandler(this.FormControl_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).EndInit();
             this.ResumeLayout(false);
