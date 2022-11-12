@@ -30,7 +30,6 @@ namespace Software2
         private void InitializeComponent()
         {
             this.comboBoxActive = new System.Windows.Forms.ComboBox();
-            this.comboBoxCity = new System.Windows.Forms.ComboBox();
             this.buttonExit = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.labelActive = new System.Windows.Forms.Label();
@@ -41,34 +40,29 @@ namespace Software2
             this.labelAdd2 = new System.Windows.Forms.Label();
             this.labelAdd1 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.labelID = new System.Windows.Forms.Label();
-            this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxZip = new System.Windows.Forms.TextBox();
-            this.textBoxCountry = new System.Windows.Forms.TextBox();
             this.textBoxAdd2 = new System.Windows.Forms.TextBox();
             this.textBoxAdd1 = new System.Windows.Forms.TextBox();
             this.textBoxCusName = new System.Windows.Forms.TextBox();
-            this.textBoxCusID = new System.Windows.Forms.TextBox();
             this.labelMain = new System.Windows.Forms.Label();
+            this.textBoxCountry = new System.Windows.Forms.TextBox();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.labelCusId = new System.Windows.Forms.Label();
+            this.textBoxCusId = new System.Windows.Forms.TextBox();
+            this.textBoxPhone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // comboBoxActive
             // 
             this.comboBoxActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxActive.FormattingEnabled = true;
-            this.comboBoxActive.Location = new System.Drawing.Point(146, 322);
+            this.comboBoxActive.Items.AddRange(new object[] {
+            "False",
+            "True"});
+            this.comboBoxActive.Location = new System.Drawing.Point(144, 335);
             this.comboBoxActive.Name = "comboBoxActive";
             this.comboBoxActive.Size = new System.Drawing.Size(216, 23);
-            this.comboBoxActive.TabIndex = 103;
-            // 
-            // comboBoxCity
-            // 
-            this.comboBoxCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCity.FormattingEnabled = true;
-            this.comboBoxCity.Location = new System.Drawing.Point(146, 189);
-            this.comboBoxCity.Name = "comboBoxCity";
-            this.comboBoxCity.Size = new System.Drawing.Size(216, 23);
-            this.comboBoxCity.TabIndex = 102;
+            this.comboBoxActive.TabIndex = 9;
             // 
             // buttonExit
             // 
@@ -90,12 +84,13 @@ namespace Software2
             this.buttonSave.TabIndex = 100;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labelActive
             // 
             this.labelActive.AutoSize = true;
             this.labelActive.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelActive.Location = new System.Drawing.Point(23, 322);
+            this.labelActive.Location = new System.Drawing.Point(21, 335);
             this.labelActive.Name = "labelActive";
             this.labelActive.Size = new System.Drawing.Size(51, 19);
             this.labelActive.TabIndex = 99;
@@ -105,7 +100,7 @@ namespace Software2
             // 
             this.labelPhone.AutoSize = true;
             this.labelPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPhone.Location = new System.Drawing.Point(23, 289);
+            this.labelPhone.Location = new System.Drawing.Point(21, 302);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(110, 19);
             this.labelPhone.TabIndex = 98;
@@ -115,7 +110,7 @@ namespace Software2
             // 
             this.labelZip.AutoSize = true;
             this.labelZip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelZip.Location = new System.Drawing.Point(23, 256);
+            this.labelZip.Location = new System.Drawing.Point(21, 269);
             this.labelZip.Name = "labelZip";
             this.labelZip.Size = new System.Drawing.Size(64, 19);
             this.labelZip.TabIndex = 97;
@@ -125,7 +120,7 @@ namespace Software2
             // 
             this.labelCountry.AutoSize = true;
             this.labelCountry.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCountry.Location = new System.Drawing.Point(23, 223);
+            this.labelCountry.Location = new System.Drawing.Point(21, 236);
             this.labelCountry.Name = "labelCountry";
             this.labelCountry.Size = new System.Drawing.Size(63, 19);
             this.labelCountry.TabIndex = 96;
@@ -135,7 +130,7 @@ namespace Software2
             // 
             this.labelCity.AutoSize = true;
             this.labelCity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCity.Location = new System.Drawing.Point(23, 186);
+            this.labelCity.Location = new System.Drawing.Point(21, 202);
             this.labelCity.Name = "labelCity";
             this.labelCity.Size = new System.Drawing.Size(35, 19);
             this.labelCity.TabIndex = 95;
@@ -145,7 +140,7 @@ namespace Software2
             // 
             this.labelAdd2.AutoSize = true;
             this.labelAdd2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAdd2.Location = new System.Drawing.Point(23, 157);
+            this.labelAdd2.Location = new System.Drawing.Point(21, 170);
             this.labelAdd2.Name = "labelAdd2";
             this.labelAdd2.Size = new System.Drawing.Size(106, 19);
             this.labelAdd2.TabIndex = 94;
@@ -155,7 +150,7 @@ namespace Software2
             // 
             this.labelAdd1.AutoSize = true;
             this.labelAdd1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAdd1.Location = new System.Drawing.Point(23, 124);
+            this.labelAdd1.Location = new System.Drawing.Point(21, 137);
             this.labelAdd1.Name = "labelAdd1";
             this.labelAdd1.Size = new System.Drawing.Size(106, 19);
             this.labelAdd1.TabIndex = 93;
@@ -165,78 +160,43 @@ namespace Software2
             // 
             this.labelName.AutoSize = true;
             this.labelName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelName.Location = new System.Drawing.Point(23, 91);
+            this.labelName.Location = new System.Drawing.Point(21, 104);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(117, 19);
             this.labelName.TabIndex = 92;
             this.labelName.Text = "Customer Name";
             // 
-            // labelID
-            // 
-            this.labelID.AutoSize = true;
-            this.labelID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelID.Location = new System.Drawing.Point(23, 62);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(91, 19);
-            this.labelID.TabIndex = 91;
-            this.labelID.Text = "Customer ID";
-            // 
-            // textBoxPhone
-            // 
-            this.textBoxPhone.Location = new System.Drawing.Point(146, 289);
-            this.textBoxPhone.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxPhone.Name = "textBoxPhone";
-            this.textBoxPhone.Size = new System.Drawing.Size(216, 23);
-            this.textBoxPhone.TabIndex = 90;
-            // 
             // textBoxZip
             // 
-            this.textBoxZip.Location = new System.Drawing.Point(146, 256);
+            this.textBoxZip.Location = new System.Drawing.Point(144, 269);
             this.textBoxZip.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxZip.Name = "textBoxZip";
             this.textBoxZip.Size = new System.Drawing.Size(216, 23);
-            this.textBoxZip.TabIndex = 89;
-            // 
-            // textBoxCountry
-            // 
-            this.textBoxCountry.Location = new System.Drawing.Point(146, 223);
-            this.textBoxCountry.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxCountry.Name = "textBoxCountry";
-            this.textBoxCountry.ReadOnly = true;
-            this.textBoxCountry.Size = new System.Drawing.Size(216, 23);
-            this.textBoxCountry.TabIndex = 88;
+            this.textBoxZip.TabIndex = 7;
             // 
             // textBoxAdd2
             // 
-            this.textBoxAdd2.Location = new System.Drawing.Point(146, 157);
+            this.textBoxAdd2.Location = new System.Drawing.Point(144, 170);
             this.textBoxAdd2.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxAdd2.Name = "textBoxAdd2";
             this.textBoxAdd2.Size = new System.Drawing.Size(216, 23);
-            this.textBoxAdd2.TabIndex = 87;
+            this.textBoxAdd2.TabIndex = 4;
             // 
             // textBoxAdd1
             // 
-            this.textBoxAdd1.Location = new System.Drawing.Point(146, 124);
+            this.textBoxAdd1.Location = new System.Drawing.Point(144, 137);
             this.textBoxAdd1.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxAdd1.Name = "textBoxAdd1";
             this.textBoxAdd1.Size = new System.Drawing.Size(216, 23);
-            this.textBoxAdd1.TabIndex = 86;
+            this.textBoxAdd1.TabIndex = 3;
             // 
             // textBoxCusName
             // 
-            this.textBoxCusName.Location = new System.Drawing.Point(146, 91);
+            this.textBoxCusName.Location = new System.Drawing.Point(144, 104);
             this.textBoxCusName.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxCusName.Name = "textBoxCusName";
             this.textBoxCusName.Size = new System.Drawing.Size(216, 23);
-            this.textBoxCusName.TabIndex = 85;
-            // 
-            // textBoxCusID
-            // 
-            this.textBoxCusID.Location = new System.Drawing.Point(146, 58);
-            this.textBoxCusID.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxCusID.Name = "textBoxCusID";
-            this.textBoxCusID.Size = new System.Drawing.Size(216, 23);
-            this.textBoxCusID.TabIndex = 84;
+            this.textBoxCusName.TabIndex = 2;
             // 
             // labelMain
             // 
@@ -248,13 +208,60 @@ namespace Software2
             this.labelMain.TabIndex = 83;
             this.labelMain.Text = "Modify Customer";
             // 
+            // textBoxCountry
+            // 
+            this.textBoxCountry.Location = new System.Drawing.Point(144, 236);
+            this.textBoxCountry.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxCountry.Name = "textBoxCountry";
+            this.textBoxCountry.Size = new System.Drawing.Size(216, 23);
+            this.textBoxCountry.TabIndex = 6;
+            // 
+            // textBoxCity
+            // 
+            this.textBoxCity.Location = new System.Drawing.Point(144, 203);
+            this.textBoxCity.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(216, 23);
+            this.textBoxCity.TabIndex = 5;
+            // 
+            // labelCusId
+            // 
+            this.labelCusId.AutoSize = true;
+            this.labelCusId.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelCusId.Location = new System.Drawing.Point(23, 71);
+            this.labelCusId.Name = "labelCusId";
+            this.labelCusId.Size = new System.Drawing.Size(91, 19);
+            this.labelCusId.TabIndex = 106;
+            this.labelCusId.Text = "Customer ID";
+            // 
+            // textBoxCusId
+            // 
+            this.textBoxCusId.Location = new System.Drawing.Point(144, 71);
+            this.textBoxCusId.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxCusId.Name = "textBoxCusId";
+            this.textBoxCusId.ReadOnly = true;
+            this.textBoxCusId.Size = new System.Drawing.Size(216, 23);
+            this.textBoxCusId.TabIndex = 1;
+            // 
+            // textBoxPhone
+            // 
+            this.textBoxPhone.Location = new System.Drawing.Point(144, 301);
+            this.textBoxPhone.Mask = "(999) 000-0000";
+            this.textBoxPhone.Name = "textBoxPhone";
+            this.textBoxPhone.Size = new System.Drawing.Size(216, 23);
+            this.textBoxPhone.TabIndex = 8;
+            // 
             // ModCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.textBoxPhone);
+            this.Controls.Add(this.textBoxCusId);
+            this.Controls.Add(this.labelCusId);
+            this.Controls.Add(this.textBoxCountry);
+            this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.comboBoxActive);
-            this.Controls.Add(this.comboBoxCity);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelActive);
@@ -265,17 +272,14 @@ namespace Software2
             this.Controls.Add(this.labelAdd2);
             this.Controls.Add(this.labelAdd1);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.labelID);
-            this.Controls.Add(this.textBoxPhone);
             this.Controls.Add(this.textBoxZip);
-            this.Controls.Add(this.textBoxCountry);
             this.Controls.Add(this.textBoxAdd2);
             this.Controls.Add(this.textBoxAdd1);
             this.Controls.Add(this.textBoxCusName);
-            this.Controls.Add(this.textBoxCusID);
             this.Controls.Add(this.labelMain);
             this.Name = "ModCustomer";
             this.Text = "ModCustomer";
+            this.Load += new System.EventHandler(this.ModCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,7 +288,6 @@ namespace Software2
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxActive;
-        private System.Windows.Forms.ComboBox comboBoxCity;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelActive;
@@ -295,14 +298,15 @@ namespace Software2
         private System.Windows.Forms.Label labelAdd2;
         private System.Windows.Forms.Label labelAdd1;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.Label labelID;
-        private System.Windows.Forms.TextBox textBoxPhone;
         private System.Windows.Forms.TextBox textBoxZip;
-        private System.Windows.Forms.TextBox textBoxCountry;
         private System.Windows.Forms.TextBox textBoxAdd2;
         private System.Windows.Forms.TextBox textBoxAdd1;
         private System.Windows.Forms.TextBox textBoxCusName;
-        private System.Windows.Forms.TextBox textBoxCusID;
         private System.Windows.Forms.Label labelMain;
+        private System.Windows.Forms.TextBox textBoxCountry;
+        private System.Windows.Forms.TextBox textBoxCity;
+        private System.Windows.Forms.Label labelCusId;
+        private System.Windows.Forms.TextBox textBoxCusId;
+        private System.Windows.Forms.MaskedTextBox textBoxPhone;
     }
 }

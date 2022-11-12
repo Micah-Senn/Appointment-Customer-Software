@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Software2
+namespace Software2.Database
 {
-    class Appointment
+    class DbUser
     {
-
-
     }
 }
