@@ -32,16 +32,6 @@ namespace Software2
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
-            /* for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
-                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
-             }
-             for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
-                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-             }*/
             dataGridViewSch.DataSource = dt;
         }
         public void DisplayDGV2()
@@ -55,16 +45,6 @@ namespace Software2
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
-            /* for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
-                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
-             }
-             for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
-                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-             }*/
             dataGridViewSch.DataSource = dt;
         }
         private void buttonExit_Click(object sender, EventArgs e)
@@ -94,6 +74,10 @@ namespace Software2
             {
                 e.Value = dt.ToLocalTime();
             }
+        }
+        private void dataGridViewSch_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

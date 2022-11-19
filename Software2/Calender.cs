@@ -50,16 +50,6 @@ namespace Software2
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
-            /* for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
-                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
-             }
-             for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
-                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-             }*/
             dataGridViewCal.DataSource = dt;
         }
         public void DisplayDGVWeek()
@@ -73,16 +63,6 @@ namespace Software2
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
-            /* for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
-                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
-             }
-             for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
-                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-             }*/
             dataGridViewCal.DataSource = dt;
         }
         public void DisplayDGVMonth()
@@ -96,16 +76,6 @@ namespace Software2
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
-            /* for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
-                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
-             }
-             for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
-                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-             }*/
             dataGridViewCal.DataSource = dt;
         }
 

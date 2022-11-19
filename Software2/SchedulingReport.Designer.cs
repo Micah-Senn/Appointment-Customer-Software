@@ -53,6 +53,7 @@ namespace Software2
             this.dataGridViewSch.RowTemplate.Height = 25;
             this.dataGridViewSch.Size = new System.Drawing.Size(1030, 268);
             this.dataGridViewSch.TabIndex = 109;
+            this.dataGridViewSch.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSch_CellContentClick);
             this.dataGridViewSch.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewSch_CellFormatting);
             // 
             // buttonExit

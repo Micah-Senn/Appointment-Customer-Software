@@ -41,10 +41,10 @@ namespace Software2
             this.radioButtonJun = new System.Windows.Forms.RadioButton();
             this.radioButtonNov = new System.Windows.Forms.RadioButton();
             this.radioButtonMay = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewType = new System.Windows.Forms.DataGridView();
             this.labelMain = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButtonJan
@@ -56,8 +56,10 @@ namespace Software2
             this.radioButtonJan.Size = new System.Drawing.Size(89, 25);
             this.radioButtonJan.TabIndex = 0;
             this.radioButtonJan.TabStop = true;
+            this.radioButtonJan.Tag = "1";
             this.radioButtonJan.Text = "January";
             this.radioButtonJan.UseVisualStyleBackColor = true;
+            this.radioButtonJan.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonJul
             // 
@@ -68,8 +70,10 @@ namespace Software2
             this.radioButtonJul.Size = new System.Drawing.Size(59, 25);
             this.radioButtonJul.TabIndex = 1;
             this.radioButtonJul.TabStop = true;
+            this.radioButtonJul.Tag = "7";
             this.radioButtonJul.Text = "July";
             this.radioButtonJul.UseVisualStyleBackColor = true;
+            this.radioButtonJul.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonAug
             // 
@@ -80,8 +84,10 @@ namespace Software2
             this.radioButtonAug.Size = new System.Drawing.Size(82, 25);
             this.radioButtonAug.TabIndex = 3;
             this.radioButtonAug.TabStop = true;
+            this.radioButtonAug.Tag = "8";
             this.radioButtonAug.Text = "August";
             this.radioButtonAug.UseVisualStyleBackColor = true;
+            this.radioButtonAug.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonFeb
             // 
@@ -92,8 +98,10 @@ namespace Software2
             this.radioButtonFeb.Size = new System.Drawing.Size(96, 25);
             this.radioButtonFeb.TabIndex = 2;
             this.radioButtonFeb.TabStop = true;
+            this.radioButtonFeb.Tag = "2";
             this.radioButtonFeb.Text = "February";
             this.radioButtonFeb.UseVisualStyleBackColor = true;
+            this.radioButtonFeb.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonOct
             // 
@@ -104,8 +112,10 @@ namespace Software2
             this.radioButtonOct.Size = new System.Drawing.Size(89, 25);
             this.radioButtonOct.TabIndex = 7;
             this.radioButtonOct.TabStop = true;
+            this.radioButtonOct.Tag = "10";
             this.radioButtonOct.Text = "October";
             this.radioButtonOct.UseVisualStyleBackColor = true;
+            this.radioButtonOct.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonApr
             // 
@@ -116,8 +126,10 @@ namespace Software2
             this.radioButtonApr.Size = new System.Drawing.Size(65, 25);
             this.radioButtonApr.TabIndex = 6;
             this.radioButtonApr.TabStop = true;
+            this.radioButtonApr.Tag = "4";
             this.radioButtonApr.Text = "April";
             this.radioButtonApr.UseVisualStyleBackColor = true;
+            this.radioButtonApr.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonSep
             // 
@@ -128,8 +140,10 @@ namespace Software2
             this.radioButtonSep.Size = new System.Drawing.Size(111, 25);
             this.radioButtonSep.TabIndex = 5;
             this.radioButtonSep.TabStop = true;
+            this.radioButtonSep.Tag = "9";
             this.radioButtonSep.Text = "September";
             this.radioButtonSep.UseVisualStyleBackColor = true;
+            this.radioButtonSep.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonMar
             // 
@@ -140,8 +154,10 @@ namespace Software2
             this.radioButtonMar.Size = new System.Drawing.Size(76, 25);
             this.radioButtonMar.TabIndex = 4;
             this.radioButtonMar.TabStop = true;
+            this.radioButtonMar.Tag = "3";
             this.radioButtonMar.Text = "March";
             this.radioButtonMar.UseVisualStyleBackColor = true;
+            this.radioButtonMar.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonDec
             // 
@@ -152,8 +168,10 @@ namespace Software2
             this.radioButtonDec.Size = new System.Drawing.Size(106, 25);
             this.radioButtonDec.TabIndex = 11;
             this.radioButtonDec.TabStop = true;
+            this.radioButtonDec.Tag = "12";
             this.radioButtonDec.Text = "December";
             this.radioButtonDec.UseVisualStyleBackColor = true;
+            this.radioButtonDec.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonJun
             // 
@@ -164,8 +182,10 @@ namespace Software2
             this.radioButtonJun.Size = new System.Drawing.Size(64, 25);
             this.radioButtonJun.TabIndex = 10;
             this.radioButtonJun.TabStop = true;
+            this.radioButtonJun.Tag = "6";
             this.radioButtonJun.Text = "June";
             this.radioButtonJun.UseVisualStyleBackColor = true;
+            this.radioButtonJun.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonNov
             // 
@@ -176,8 +196,10 @@ namespace Software2
             this.radioButtonNov.Size = new System.Drawing.Size(109, 25);
             this.radioButtonNov.TabIndex = 9;
             this.radioButtonNov.TabStop = true;
+            this.radioButtonNov.Tag = "11";
             this.radioButtonNov.Text = "November";
             this.radioButtonNov.UseVisualStyleBackColor = true;
+            this.radioButtonNov.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
             // radioButtonMay
             // 
@@ -188,17 +210,30 @@ namespace Software2
             this.radioButtonMay.Size = new System.Drawing.Size(61, 25);
             this.radioButtonMay.TabIndex = 8;
             this.radioButtonMay.TabStop = true;
+            this.radioButtonMay.Tag = "5";
             this.radioButtonMay.Text = "May";
             this.radioButtonMay.UseVisualStyleBackColor = true;
+            this.radioButtonMay.CheckedChanged += new System.EventHandler(this.TypeReport_Load);
             // 
-            // dataGridView1
+            // dataGridViewType
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(460, 254);
-            this.dataGridView1.TabIndex = 12;
+            this.dataGridViewType.AllowUserToAddRows = false;
+            this.dataGridViewType.AllowUserToDeleteRows = false;
+            this.dataGridViewType.AllowUserToResizeColumns = false;
+            this.dataGridViewType.AllowUserToResizeRows = false;
+            this.dataGridViewType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewType.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridViewType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewType.Location = new System.Drawing.Point(12, 40);
+            this.dataGridViewType.Name = "dataGridViewType";
+            this.dataGridViewType.ReadOnly = true;
+            this.dataGridViewType.RowHeadersVisible = false;
+            this.dataGridViewType.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewType.RowTemplate.Height = 25;
+            this.dataGridViewType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewType.Size = new System.Drawing.Size(460, 254);
+            this.dataGridViewType.TabIndex = 12;
+            this.dataGridViewType.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // labelMain
             // 
@@ -228,7 +263,7 @@ namespace Software2
             this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.labelMain);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewType);
             this.Controls.Add(this.radioButtonDec);
             this.Controls.Add(this.radioButtonJun);
             this.Controls.Add(this.radioButtonNov);
@@ -246,7 +281,8 @@ namespace Software2
             this.MinimizeBox = false;
             this.Name = "TypeReport";
             this.Text = "TypeReport";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.TypeReport_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewType)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,7 +302,7 @@ namespace Software2
         private System.Windows.Forms.RadioButton radioButtonJun;
         private System.Windows.Forms.RadioButton radioButtonNov;
         private System.Windows.Forms.RadioButton radioButtonMay;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewType;
         private System.Windows.Forms.Label labelMain;
         private System.Windows.Forms.Button buttonExit;
     }

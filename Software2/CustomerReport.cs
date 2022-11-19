@@ -24,33 +24,59 @@ namespace Software2
 
         private void CustomerReport_Load(object sender, EventArgs e)
         {
+            LoadCustomersId();
 
         }
         public void DisplayDGV()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
-
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
-                "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE customerId = 1";
-            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
-            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
+            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
+            MySqlConnection conn = new MySqlConnection(sql);
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT customerId AS 'Customer ID', appointmentId AS 'Appointment ID', userId AS 'User ID', description AS 'Description', type AS 'Type'," +
+                " start AS 'Start Time', end AS 'End Time' FROM software2.appointment WHERE customerId = @customerId";
+            cmd.Parameters.Add("@customerId", MySqlDbType.Int16).Value = comboBoxCus.SelectedIndex + 1;
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
-            adpa.Fill(dt);
-            /* for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
-                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
-             }
-             for (int i = 0; i < dt.Rows.Count; i++)
-             {
-                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
-                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-             }*/
+            adp.Fill(dt);
             dataGridViewCus.DataSource = dt;
         }
 
         private void comboBoxCus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DisplayDGV();
+            labelSel.Hide();
+            this.Refresh();
+        }
+
+        private void dataGridViewCus_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime dt)
+            {
+                e.Value = dt.ToLocalTime();
+            }
+        }
+        private void LoadCustomersId()
+        {
+            var connectionString = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                var query = "SELECT customerId FROM customer";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        //Iterate through the rows and add it to the combobox's items
+                        while (reader.Read())
+                        {
+                            comboBoxCus.Items.Add(reader.GetString("customerId"));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void dataGridViewCus_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
