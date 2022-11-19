@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -19,10 +21,79 @@ namespace Software2
         {
 
         }
+        public void DisplayDGV1()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(connectionString);
 
+            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
+                "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE userId = 1";
+            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
+            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
+            DataTable dt = new DataTable();
+            adpa.Fill(dt);
+            /* for (int i = 0; i < dt.Rows.Count; i++)
+             {
+                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
+                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
+             }
+             for (int i = 0; i < dt.Rows.Count; i++)
+             {
+                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
+                 dt.Rows[i]["End Time"] = y.ToLocalTime();
+             }*/
+            dataGridViewSch.DataSource = dt;
+        }
+        public void DisplayDGV2()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(connectionString);
+
+            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
+                "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE userId = 2";
+            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
+            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
+            DataTable dt = new DataTable();
+            adpa.Fill(dt);
+            /* for (int i = 0; i < dt.Rows.Count; i++)
+             {
+                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
+                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
+             }
+             for (int i = 0; i < dt.Rows.Count; i++)
+             {
+                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
+                 dt.Rows[i]["End Time"] = y.ToLocalTime();
+             }*/
+            dataGridViewSch.DataSource = dt;
+        }
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void comboBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxUsers.SelectedIndex == 0)
+            {
+                labelUser.Hide();
+                DisplayDGV1();
+                this.Refresh();
+            }
+            else if (comboBoxUsers.SelectedIndex == 1)
+            {
+                labelUser.Hide();
+                DisplayDGV2();
+                this.Refresh();
+            }
+        }
+
+        private void dataGridViewSch_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime dt)
+            {
+                e.Value = dt.ToLocalTime();
+            }
         }
     }
 }

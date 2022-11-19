@@ -29,21 +29,31 @@ namespace Software2
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSch = new System.Windows.Forms.DataGridView();
             this.buttonExit = new System.Windows.Forms.Button();
             this.labelMain = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.comboBoxUsers = new System.Windows.Forms.ComboBox();
+            this.labelUser = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSch)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewSch
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1030, 268);
-            this.dataGridView1.TabIndex = 109;
+            this.dataGridViewSch.AllowUserToAddRows = false;
+            this.dataGridViewSch.AllowUserToDeleteRows = false;
+            this.dataGridViewSch.AllowUserToResizeColumns = false;
+            this.dataGridViewSch.AllowUserToResizeRows = false;
+            this.dataGridViewSch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSch.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dataGridViewSch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSch.Location = new System.Drawing.Point(12, 52);
+            this.dataGridViewSch.Name = "dataGridViewSch";
+            this.dataGridViewSch.ReadOnly = true;
+            this.dataGridViewSch.RowHeadersVisible = false;
+            this.dataGridViewSch.RowTemplate.Height = 25;
+            this.dataGridViewSch.Size = new System.Drawing.Size(1030, 268);
+            this.dataGridViewSch.TabIndex = 109;
+            this.dataGridViewSch.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewSch_CellFormatting);
             // 
             // buttonExit
             // 
@@ -66,29 +76,47 @@ namespace Software2
             this.labelMain.TabIndex = 104;
             this.labelMain.Text = "Consultant Scheduling Report";
             // 
-            // comboBox1
+            // comboBoxUsers
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(387, 346);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(295, 36);
-            this.comboBox1.TabIndex = 110;
+            this.comboBoxUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUsers.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxUsers.FormattingEnabled = true;
+            this.comboBoxUsers.Items.AddRange(new object[] {
+            "User 1",
+            "User 2"});
+            this.comboBoxUsers.Location = new System.Drawing.Point(387, 355);
+            this.comboBoxUsers.Name = "comboBoxUsers";
+            this.comboBoxUsers.Size = new System.Drawing.Size(295, 36);
+            this.comboBoxUsers.TabIndex = 110;
+            this.comboBoxUsers.SelectedIndexChanged += new System.EventHandler(this.comboBoxUsers_SelectedIndexChanged);
+            // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelUser.Location = new System.Drawing.Point(452, 326);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(156, 21);
+            this.labelUser.TabIndex = 111;
+            this.labelUser.Text = "Please select a user";
             // 
             // SchedulingReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 403);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.labelUser);
+            this.Controls.Add(this.comboBoxUsers);
+            this.Controls.Add(this.dataGridViewSch);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.labelMain);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SchedulingReport";
             this.Text = "SchedulingReport";
             this.Load += new System.EventHandler(this.SchedulingReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,9 +124,10 @@ namespace Software2
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSch;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label labelMain;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxUsers;
+        private System.Windows.Forms.Label labelUser;
     }
 }

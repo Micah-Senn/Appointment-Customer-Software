@@ -86,9 +86,6 @@ namespace Software2
             textBoxZip.Text = getSQL(getZip);
             textBoxPhone.Text = getSQL(getPhone);
             comboBoxActive.SelectedIndex = getIntSQL(getActive);
-
-
-
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -127,7 +124,7 @@ namespace Software2
             DbAddress.UpdateAddress(addr, addrId);
             DbCity.UpdateCity(city, cityId);
             DbCountry.UpdateCountry(country, countryId);
-            _parent.Display();
+            _parent.DisplayCus();
             this.Close();
         }
 

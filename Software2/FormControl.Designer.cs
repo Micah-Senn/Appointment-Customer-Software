@@ -50,6 +50,7 @@ namespace Software2
             // 
             // labelAppointments
             // 
+            this.labelAppointments.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelAppointments.AutoSize = true;
             this.labelAppointments.Font = new System.Drawing.Font("Segoe UI", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.labelAppointments.Location = new System.Drawing.Point(14, 14);
@@ -61,7 +62,8 @@ namespace Software2
             // 
             // buttonAddApp
             // 
-            this.buttonAddApp.Location = new System.Drawing.Point(537, 264);
+            this.buttonAddApp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAddApp.Location = new System.Drawing.Point(650, 264);
             this.buttonAddApp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonAddApp.Name = "buttonAddApp";
             this.buttonAddApp.Size = new System.Drawing.Size(100, 45);
@@ -72,7 +74,8 @@ namespace Software2
             // 
             // buttonModifyApp
             // 
-            this.buttonModifyApp.Location = new System.Drawing.Point(647, 264);
+            this.buttonModifyApp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonModifyApp.Location = new System.Drawing.Point(760, 264);
             this.buttonModifyApp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonModifyApp.Name = "buttonModifyApp";
             this.buttonModifyApp.Size = new System.Drawing.Size(100, 45);
@@ -83,17 +86,20 @@ namespace Software2
             // 
             // buttonDeleteApp
             // 
-            this.buttonDeleteApp.Location = new System.Drawing.Point(757, 264);
+            this.buttonDeleteApp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonDeleteApp.Location = new System.Drawing.Point(870, 264);
             this.buttonDeleteApp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonDeleteApp.Name = "buttonDeleteApp";
             this.buttonDeleteApp.Size = new System.Drawing.Size(100, 45);
             this.buttonDeleteApp.TabIndex = 3;
             this.buttonDeleteApp.Text = "Delete";
             this.buttonDeleteApp.UseVisualStyleBackColor = true;
+            this.buttonDeleteApp.Click += new System.EventHandler(this.buttonDeleteApp_Click);
             // 
             // buttonAddCus
             // 
-            this.buttonAddCus.Location = new System.Drawing.Point(317, 553);
+            this.buttonAddCus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonAddCus.Location = new System.Drawing.Point(430, 549);
             this.buttonAddCus.Margin = new System.Windows.Forms.Padding(5);
             this.buttonAddCus.Name = "buttonAddCus";
             this.buttonAddCus.Size = new System.Drawing.Size(100, 45);
@@ -104,7 +110,8 @@ namespace Software2
             // 
             // buttonModCus
             // 
-            this.buttonModCus.Location = new System.Drawing.Point(427, 553);
+            this.buttonModCus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonModCus.Location = new System.Drawing.Point(540, 549);
             this.buttonModCus.Margin = new System.Windows.Forms.Padding(5);
             this.buttonModCus.Name = "buttonModCus";
             this.buttonModCus.Size = new System.Drawing.Size(100, 45);
@@ -115,7 +122,8 @@ namespace Software2
             // 
             // buttonDeleteCus
             // 
-            this.buttonDeleteCus.Location = new System.Drawing.Point(537, 553);
+            this.buttonDeleteCus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonDeleteCus.Location = new System.Drawing.Point(650, 549);
             this.buttonDeleteCus.Margin = new System.Windows.Forms.Padding(5);
             this.buttonDeleteCus.Name = "buttonDeleteCus";
             this.buttonDeleteCus.Size = new System.Drawing.Size(100, 45);
@@ -126,7 +134,8 @@ namespace Software2
             // 
             // buttonCal
             // 
-            this.buttonCal.Location = new System.Drawing.Point(681, 341);
+            this.buttonCal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonCal.Location = new System.Drawing.Point(794, 341);
             this.buttonCal.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCal.Name = "buttonCal";
             this.buttonCal.Size = new System.Drawing.Size(176, 29);
@@ -137,7 +146,8 @@ namespace Software2
             // 
             // buttonType
             // 
-            this.buttonType.Location = new System.Drawing.Point(681, 380);
+            this.buttonType.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonType.Location = new System.Drawing.Point(794, 380);
             this.buttonType.Margin = new System.Windows.Forms.Padding(5);
             this.buttonType.Name = "buttonType";
             this.buttonType.Size = new System.Drawing.Size(176, 29);
@@ -148,7 +158,8 @@ namespace Software2
             // 
             // buttonSchedule
             // 
-            this.buttonSchedule.Location = new System.Drawing.Point(681, 419);
+            this.buttonSchedule.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSchedule.Location = new System.Drawing.Point(794, 419);
             this.buttonSchedule.Margin = new System.Windows.Forms.Padding(5);
             this.buttonSchedule.Name = "buttonSchedule";
             this.buttonSchedule.Size = new System.Drawing.Size(176, 29);
@@ -159,7 +170,8 @@ namespace Software2
             // 
             // buttonCusReport
             // 
-            this.buttonCusReport.Location = new System.Drawing.Point(681, 458);
+            this.buttonCusReport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonCusReport.Location = new System.Drawing.Point(794, 458);
             this.buttonCusReport.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCusReport.Name = "buttonCusReport";
             this.buttonCusReport.Size = new System.Drawing.Size(176, 29);
@@ -170,7 +182,8 @@ namespace Software2
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(681, 565);
+            this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonExit.Location = new System.Drawing.Point(794, 569);
             this.buttonExit.Margin = new System.Windows.Forms.Padding(5);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(176, 29);
@@ -185,18 +198,22 @@ namespace Software2
             this.AppointmentGridView.AllowUserToDeleteRows = false;
             this.AppointmentGridView.AllowUserToResizeColumns = false;
             this.AppointmentGridView.AllowUserToResizeRows = false;
+            this.AppointmentGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AppointmentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.AppointmentGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.AppointmentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AppointmentGridView.Location = new System.Drawing.Point(14, 52);
             this.AppointmentGridView.Margin = new System.Windows.Forms.Padding(5);
             this.AppointmentGridView.Name = "AppointmentGridView";
             this.AppointmentGridView.ReadOnly = true;
             this.AppointmentGridView.RowHeadersVisible = false;
+            this.AppointmentGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.AppointmentGridView.RowTemplate.Height = 25;
             this.AppointmentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.AppointmentGridView.Size = new System.Drawing.Size(843, 202);
+            this.AppointmentGridView.Size = new System.Drawing.Size(956, 202);
             this.AppointmentGridView.TabIndex = 12;
             this.AppointmentGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AppointmentGridView_CellContentClick);
+            this.AppointmentGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.AppointmentGridView_CellFormatting);
             // 
             // CustomersGridView
             // 
@@ -204,7 +221,9 @@ namespace Software2
             this.CustomersGridView.AllowUserToDeleteRows = false;
             this.CustomersGridView.AllowUserToResizeColumns = false;
             this.CustomersGridView.AllowUserToResizeRows = false;
+            this.CustomersGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CustomersGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CustomersGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.CustomersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomersGridView.Location = new System.Drawing.Point(14, 341);
             this.CustomersGridView.Margin = new System.Windows.Forms.Padding(5);
@@ -213,12 +232,13 @@ namespace Software2
             this.CustomersGridView.RowHeadersVisible = false;
             this.CustomersGridView.RowTemplate.Height = 25;
             this.CustomersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomersGridView.Size = new System.Drawing.Size(623, 202);
+            this.CustomersGridView.Size = new System.Drawing.Size(736, 202);
             this.CustomersGridView.TabIndex = 13;
             this.CustomersGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomersGridView_CellContentClick);
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(14, 303);
@@ -232,7 +252,8 @@ namespace Software2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 608);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(984, 608);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CustomersGridView);
             this.Controls.Add(this.AppointmentGridView);
@@ -248,6 +269,8 @@ namespace Software2
             this.Controls.Add(this.buttonModifyApp);
             this.Controls.Add(this.buttonAddApp);
             this.Controls.Add(this.labelAppointments);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormControl";
             this.Text = "Scheduling Software";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormControl_FormClosed);

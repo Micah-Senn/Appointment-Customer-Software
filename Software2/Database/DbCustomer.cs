@@ -44,10 +44,7 @@ namespace Software2
                     return 0;
                 }
 
-
                 return Convert.ToInt32(rdr[0]); ;
-
-
             }
 
             return 0;
@@ -86,7 +83,6 @@ namespace Software2
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@customerName", MySqlDbType.VarChar).Value = cus.customerName;
-         // cmd.Parameters.Add("@addressId", MySqlDbType.VarChar).Value = cus.addressId; // do I need to cast as INT?? FIXME
             cmd.Parameters.Add("@active", MySqlDbType.Int16).Value = cus.active;
             cmd.Parameters.Add("@customerId", MySqlDbType.Int16).Value = id;
 
@@ -122,38 +118,6 @@ namespace Software2
             conn.Close();
         }
 
-       /* public static void SelectCustomer( string id)
-        {
-            string sql = "SELECT customerName FROM customer WHERE customerId = @customerId";
-            MySqlConnection conn = GetConnection();
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            var reader = cmd.ExecuteReader();
-            cmd.Parameters.Add("@customerId", MySqlDbType.Int32).Value = id;
-            try
-            {
-                while(reader.Read())
-                {
-                     string customerName = reader.GetString(0);
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Customer was not found.\n" + ex.Message);
 
-            }
-            conn.Close();
-        }*/
-        public static void DisplayCustomer(string query, DataGridView dgv)
-        {
-            string sql = query;
-            MySqlConnection conn = GetConnection();
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-            DataTable tbl = new DataTable();
-            adp.Fill(tbl);
-            dgv.DataSource = tbl;
-            conn.Close();
-
-        }
     }
 }

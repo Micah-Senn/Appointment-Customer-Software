@@ -86,9 +86,7 @@ namespace Software2
             DbCity.AddCity(city);
             DbAddress.AddAddress(addr);
             DbCustomer.AddCustomer(cus);
-            CustomerInfo info = new CustomerInfo(customerId, textBoxCusName.Text, textBoxAdd1.Text, textBoxAdd2.Text, textBoxCity.Text, textBoxCountry.Text, textBoxZip.Text, textBoxPhone.Text, comboBoxActive.SelectedIndex);
-            CustomerInfo.AddCustomerInfo(info);
-            _parent.Display();
+            _parent.DisplayCus();
             this.Close();
         }
 

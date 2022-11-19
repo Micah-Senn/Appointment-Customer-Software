@@ -241,6 +241,9 @@ namespace Software2
             this.Controls.Add(this.radioButtonFeb);
             this.Controls.Add(this.radioButtonJul);
             this.Controls.Add(this.radioButtonJan);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TypeReport";
             this.Text = "TypeReport";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

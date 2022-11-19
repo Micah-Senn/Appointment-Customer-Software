@@ -116,6 +116,7 @@ namespace Software2
             this.Controls.Add(this.buttonLogin);
             this.Controls.Add(this.textBoxPass);
             this.Controls.Add(this.textBoxUser);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormLogin";

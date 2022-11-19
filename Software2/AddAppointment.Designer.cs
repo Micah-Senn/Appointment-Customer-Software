@@ -30,155 +30,82 @@ namespace Software2
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxAppID = new System.Windows.Forms.TextBox();
-            this.textBoxUserID = new System.Windows.Forms.TextBox();
-            this.textBoxCusID = new System.Windows.Forms.TextBox();
-            this.textBoxTitle = new System.Windows.Forms.TextBox();
+            this.textBoxUserId = new System.Windows.Forms.TextBox();
+            this.textBoxCusId = new System.Windows.Forms.TextBox();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
-            this.textBoxLocation = new System.Windows.Forms.TextBox();
-            this.textBoxContact = new System.Windows.Forms.TextBox();
             this.textBoxType = new System.Windows.Forms.TextBox();
-            this.textBoxURL = new System.Windows.Forms.TextBox();
-            this.dateTimePickerDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerST = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerET = new System.Windows.Forms.DateTimePicker();
-            this.labelAppID = new System.Windows.Forms.Label();
             this.labelUserID = new System.Windows.Forms.Label();
             this.labelCusID = new System.Windows.Forms.Label();
-            this.labelTitle = new System.Windows.Forms.Label();
             this.labelDesc = new System.Windows.Forms.Label();
-            this.labelLocation = new System.Windows.Forms.Label();
-            this.labelContact = new System.Windows.Forms.Label();
             this.labelType = new System.Windows.Forms.Label();
-            this.labelURL = new System.Windows.Forms.Label();
-            this.labelDate = new System.Windows.Forms.Label();
-            this.labelET = new System.Windows.Forms.Label();
             this.labelST = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.labelET = new System.Windows.Forms.Label();
+            this.dateTimePickerET = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(91, 5);
+            this.label1.Location = new System.Drawing.Point(111, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Add Appointment";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBoxAppID
+            // textBoxUserId
             // 
-            this.textBoxAppID.Location = new System.Drawing.Point(148, 63);
-            this.textBoxAppID.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxAppID.Name = "textBoxAppID";
-            this.textBoxAppID.Size = new System.Drawing.Size(216, 23);
-            this.textBoxAppID.TabIndex = 1;
+            this.textBoxUserId.Location = new System.Drawing.Point(144, 148);
+            this.textBoxUserId.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxUserId.Name = "textBoxUserId";
+            this.textBoxUserId.Size = new System.Drawing.Size(216, 23);
+            this.textBoxUserId.TabIndex = 2;
+            this.textBoxUserId.TextChanged += new System.EventHandler(this.textBoxUserId_TextChanged);
             // 
-            // textBoxUserID
+            // textBoxCusId
             // 
-            this.textBoxUserID.Location = new System.Drawing.Point(148, 96);
-            this.textBoxUserID.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxUserID.Name = "textBoxUserID";
-            this.textBoxUserID.Size = new System.Drawing.Size(216, 23);
-            this.textBoxUserID.TabIndex = 2;
-            // 
-            // textBoxCusID
-            // 
-            this.textBoxCusID.Location = new System.Drawing.Point(148, 129);
-            this.textBoxCusID.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxCusID.Name = "textBoxCusID";
-            this.textBoxCusID.Size = new System.Drawing.Size(216, 23);
-            this.textBoxCusID.TabIndex = 3;
-            // 
-            // textBoxTitle
-            // 
-            this.textBoxTitle.Location = new System.Drawing.Point(148, 162);
-            this.textBoxTitle.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.Size = new System.Drawing.Size(216, 23);
-            this.textBoxTitle.TabIndex = 4;
+            this.textBoxCusId.Location = new System.Drawing.Point(144, 115);
+            this.textBoxCusId.Margin = new System.Windows.Forms.Padding(5);
+            this.textBoxCusId.Name = "textBoxCusId";
+            this.textBoxCusId.Size = new System.Drawing.Size(216, 23);
+            this.textBoxCusId.TabIndex = 1;
+            this.textBoxCusId.TextChanged += new System.EventHandler(this.textBoxCusId_TextChanged);
             // 
             // textBoxDesc
             // 
-            this.textBoxDesc.Location = new System.Drawing.Point(148, 195);
+            this.textBoxDesc.Location = new System.Drawing.Point(144, 181);
             this.textBoxDesc.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxDesc.Name = "textBoxDesc";
             this.textBoxDesc.Size = new System.Drawing.Size(216, 23);
-            this.textBoxDesc.TabIndex = 5;
-            // 
-            // textBoxLocation
-            // 
-            this.textBoxLocation.Location = new System.Drawing.Point(148, 228);
-            this.textBoxLocation.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(216, 23);
-            this.textBoxLocation.TabIndex = 6;
-            // 
-            // textBoxContact
-            // 
-            this.textBoxContact.Location = new System.Drawing.Point(148, 261);
-            this.textBoxContact.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxContact.Name = "textBoxContact";
-            this.textBoxContact.Size = new System.Drawing.Size(216, 23);
-            this.textBoxContact.TabIndex = 7;
+            this.textBoxDesc.TabIndex = 4;
             // 
             // textBoxType
             // 
-            this.textBoxType.Location = new System.Drawing.Point(148, 294);
+            this.textBoxType.Location = new System.Drawing.Point(144, 214);
             this.textBoxType.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxType.Name = "textBoxType";
             this.textBoxType.Size = new System.Drawing.Size(216, 23);
-            this.textBoxType.TabIndex = 8;
-            // 
-            // textBoxURL
-            // 
-            this.textBoxURL.Location = new System.Drawing.Point(148, 327);
-            this.textBoxURL.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxURL.Name = "textBoxURL";
-            this.textBoxURL.Size = new System.Drawing.Size(216, 23);
-            this.textBoxURL.TabIndex = 9;
-            // 
-            // dateTimePickerDate
-            // 
-            this.dateTimePickerDate.Location = new System.Drawing.Point(148, 358);
-            this.dateTimePickerDate.Name = "dateTimePickerDate";
-            this.dateTimePickerDate.Size = new System.Drawing.Size(216, 23);
-            this.dateTimePickerDate.TabIndex = 10;
+            this.textBoxType.TabIndex = 5;
             // 
             // dateTimePickerST
             // 
             this.dateTimePickerST.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerST.Location = new System.Drawing.Point(148, 387);
+            this.dateTimePickerST.Location = new System.Drawing.Point(144, 245);
             this.dateTimePickerST.Name = "dateTimePickerST";
             this.dateTimePickerST.Size = new System.Drawing.Size(216, 23);
-            this.dateTimePickerST.TabIndex = 11;
-            // 
-            // dateTimePickerET
-            // 
-            this.dateTimePickerET.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerET.Location = new System.Drawing.Point(148, 416);
-            this.dateTimePickerET.Name = "dateTimePickerET";
-            this.dateTimePickerET.Size = new System.Drawing.Size(216, 23);
-            this.dateTimePickerET.TabIndex = 12;
-            // 
-            // labelAppID
-            // 
-            this.labelAppID.AutoSize = true;
-            this.labelAppID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAppID.Location = new System.Drawing.Point(25, 67);
-            this.labelAppID.Name = "labelAppID";
-            this.labelAppID.Size = new System.Drawing.Size(115, 19);
-            this.labelAppID.TabIndex = 13;
-            this.labelAppID.Text = "Appointment ID";
+            this.dateTimePickerST.TabIndex = 6;
+            this.dateTimePickerST.ValueChanged += new System.EventHandler(this.dateTimePickerST_ValueChanged);
             // 
             // labelUserID
             // 
             this.labelUserID.AutoSize = true;
             this.labelUserID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelUserID.Location = new System.Drawing.Point(25, 96);
+            this.labelUserID.Location = new System.Drawing.Point(21, 148);
             this.labelUserID.Name = "labelUserID";
             this.labelUserID.Size = new System.Drawing.Size(57, 19);
             this.labelUserID.TabIndex = 14;
@@ -188,97 +115,37 @@ namespace Software2
             // 
             this.labelCusID.AutoSize = true;
             this.labelCusID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCusID.Location = new System.Drawing.Point(25, 129);
+            this.labelCusID.Location = new System.Drawing.Point(21, 115);
             this.labelCusID.Name = "labelCusID";
             this.labelCusID.Size = new System.Drawing.Size(91, 19);
             this.labelCusID.TabIndex = 15;
             this.labelCusID.Text = "Customer ID";
             // 
-            // labelTitle
-            // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelTitle.Location = new System.Drawing.Point(25, 162);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(38, 19);
-            this.labelTitle.TabIndex = 16;
-            this.labelTitle.Text = "Title";
-            // 
             // labelDesc
             // 
             this.labelDesc.AutoSize = true;
             this.labelDesc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelDesc.Location = new System.Drawing.Point(25, 191);
+            this.labelDesc.Location = new System.Drawing.Point(21, 181);
             this.labelDesc.Name = "labelDesc";
             this.labelDesc.Size = new System.Drawing.Size(85, 19);
             this.labelDesc.TabIndex = 17;
             this.labelDesc.Text = "Description";
             // 
-            // labelLocation
-            // 
-            this.labelLocation.AutoSize = true;
-            this.labelLocation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelLocation.Location = new System.Drawing.Point(25, 228);
-            this.labelLocation.Name = "labelLocation";
-            this.labelLocation.Size = new System.Drawing.Size(66, 19);
-            this.labelLocation.TabIndex = 18;
-            this.labelLocation.Text = "Location";
-            // 
-            // labelContact
-            // 
-            this.labelContact.AutoSize = true;
-            this.labelContact.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelContact.Location = new System.Drawing.Point(25, 261);
-            this.labelContact.Name = "labelContact";
-            this.labelContact.Size = new System.Drawing.Size(60, 19);
-            this.labelContact.TabIndex = 19;
-            this.labelContact.Text = "Contact";
-            // 
             // labelType
             // 
             this.labelType.AutoSize = true;
             this.labelType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelType.Location = new System.Drawing.Point(25, 294);
+            this.labelType.Location = new System.Drawing.Point(21, 214);
             this.labelType.Name = "labelType";
             this.labelType.Size = new System.Drawing.Size(41, 19);
             this.labelType.TabIndex = 20;
             this.labelType.Text = "Type";
             // 
-            // labelURL
-            // 
-            this.labelURL.AutoSize = true;
-            this.labelURL.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelURL.Location = new System.Drawing.Point(25, 327);
-            this.labelURL.Name = "labelURL";
-            this.labelURL.Size = new System.Drawing.Size(35, 19);
-            this.labelURL.TabIndex = 21;
-            this.labelURL.Text = "URL";
-            // 
-            // labelDate
-            // 
-            this.labelDate.AutoSize = true;
-            this.labelDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelDate.Location = new System.Drawing.Point(25, 358);
-            this.labelDate.Name = "labelDate";
-            this.labelDate.Size = new System.Drawing.Size(40, 19);
-            this.labelDate.TabIndex = 22;
-            this.labelDate.Text = "Date";
-            // 
-            // labelET
-            // 
-            this.labelET.AutoSize = true;
-            this.labelET.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelET.Location = new System.Drawing.Point(25, 416);
-            this.labelET.Name = "labelET";
-            this.labelET.Size = new System.Drawing.Size(70, 19);
-            this.labelET.TabIndex = 23;
-            this.labelET.Text = "End Time";
-            // 
             // labelST
             // 
             this.labelST.AutoSize = true;
             this.labelST.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelST.Location = new System.Drawing.Point(25, 387);
+            this.labelST.Location = new System.Drawing.Point(21, 245);
             this.labelST.Name = "labelST";
             this.labelST.Size = new System.Drawing.Size(78, 19);
             this.labelST.TabIndex = 24;
@@ -286,57 +153,67 @@ namespace Software2
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(25, 506);
+            this.buttonSave.Location = new System.Drawing.Point(150, 406);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(5);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(100, 45);
-            this.buttonSave.TabIndex = 25;
+            this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(264, 506);
+            this.buttonExit.Location = new System.Drawing.Point(260, 406);
             this.buttonExit.Margin = new System.Windows.Forms.Padding(5);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(100, 45);
-            this.buttonExit.TabIndex = 26;
+            this.buttonExit.TabIndex = 9;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // labelET
+            // 
+            this.labelET.AutoSize = true;
+            this.labelET.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelET.Location = new System.Drawing.Point(21, 274);
+            this.labelET.Name = "labelET";
+            this.labelET.Size = new System.Drawing.Size(70, 19);
+            this.labelET.TabIndex = 28;
+            this.labelET.Text = "End Time";
+            // 
+            // dateTimePickerET
+            // 
+            this.dateTimePickerET.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerET.Location = new System.Drawing.Point(144, 274);
+            this.dateTimePickerET.Name = "dateTimePickerET";
+            this.dateTimePickerET.Size = new System.Drawing.Size(216, 23);
+            this.dateTimePickerET.TabIndex = 7;
             // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 561);
+            this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.labelET);
+            this.Controls.Add(this.dateTimePickerET);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelST);
-            this.Controls.Add(this.labelET);
-            this.Controls.Add(this.labelDate);
-            this.Controls.Add(this.labelURL);
             this.Controls.Add(this.labelType);
-            this.Controls.Add(this.labelContact);
-            this.Controls.Add(this.labelLocation);
             this.Controls.Add(this.labelDesc);
-            this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelCusID);
             this.Controls.Add(this.labelUserID);
-            this.Controls.Add(this.labelAppID);
-            this.Controls.Add(this.dateTimePickerET);
             this.Controls.Add(this.dateTimePickerST);
-            this.Controls.Add(this.dateTimePickerDate);
-            this.Controls.Add(this.textBoxURL);
             this.Controls.Add(this.textBoxType);
-            this.Controls.Add(this.textBoxContact);
-            this.Controls.Add(this.textBoxLocation);
             this.Controls.Add(this.textBoxDesc);
-            this.Controls.Add(this.textBoxTitle);
-            this.Controls.Add(this.textBoxCusID);
-            this.Controls.Add(this.textBoxUserID);
-            this.Controls.Add(this.textBoxAppID);
+            this.Controls.Add(this.textBoxCusId);
+            this.Controls.Add(this.textBoxUserId);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddAppointment";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "Add Appointment";
@@ -349,31 +226,19 @@ namespace Software2
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxAppID;
-        private System.Windows.Forms.TextBox textBoxUserID;
-        private System.Windows.Forms.TextBox textBoxCusID;
-        private System.Windows.Forms.TextBox textBoxTitle;
+        private System.Windows.Forms.TextBox textBoxUserId;
+        private System.Windows.Forms.TextBox textBoxCusId;
         private System.Windows.Forms.TextBox textBoxDesc;
-        private System.Windows.Forms.TextBox textBoxLocation;
-        private System.Windows.Forms.TextBox textBoxContact;
         private System.Windows.Forms.TextBox textBoxType;
-        private System.Windows.Forms.TextBox textBoxURL;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerST;
-        private System.Windows.Forms.DateTimePicker dateTimePickerET;
-        private System.Windows.Forms.Label labelAppID;
         private System.Windows.Forms.Label labelUserID;
         private System.Windows.Forms.Label labelCusID;
-        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Label labelDesc;
-        private System.Windows.Forms.Label labelLocation;
-        private System.Windows.Forms.Label labelContact;
         private System.Windows.Forms.Label labelType;
-        private System.Windows.Forms.Label labelURL;
-        private System.Windows.Forms.Label labelDate;
-        private System.Windows.Forms.Label labelET;
         private System.Windows.Forms.Label labelST;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Label labelET;
+        private System.Windows.Forms.DateTimePicker dateTimePickerET;
     }
 }

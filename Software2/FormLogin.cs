@@ -12,8 +12,10 @@ using System.Globalization;
 
 namespace Software2
 {
+
     public partial class FormLogin : Form
     {
+        int userId;
         public string error = "The username or password you entered was incorrect";
         public FormLogin()
         {
@@ -73,6 +75,13 @@ namespace Software2
             }
             if (textBoxUser.Text == "test" && textBoxPass.Text == "test")
             {
+                userId = 1;
+                new FormControl().Show();
+                this.Hide();
+            }
+            else if (textBoxUser.Text == "micahsenn" && textBoxPass.Text == "password")
+            {
+                userId = 2;
                 new FormControl().Show();
                 this.Hide();
             }
