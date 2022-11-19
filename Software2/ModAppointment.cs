@@ -51,13 +51,13 @@ namespace Software2
                 rdr.Read();
                 if (rdr[0] == DBNull.Value)
                 {
-                    return default(DateTime);
+                    return default;
                 }
                 DateTime dt = Convert.ToDateTime(rdr[0]);
                 return dt.ToLocalTime();
             }
 
-            return default(DateTime);
+            return default;
         }
         private void buttonExit_Click(object sender, EventArgs e)
         {
@@ -83,15 +83,16 @@ namespace Software2
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            DateTime startTime = dateTimePickerST.Value.ToUniversalTime();
-            DateTime endTime = dateTimePickerET.Value.ToUniversalTime();
+            DateTime startTime = dateTimePickerST.Value;
+            DateTime endTime = dateTimePickerET.Value;
+            bool overlap = DbAppointment.OverlapMod(dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime(), this.AppointmentId);
             if (
                string.IsNullOrEmpty(textBoxUserId.Text) ||
                string.IsNullOrEmpty(textBoxCusId.Text) ||
                string.IsNullOrEmpty(textBoxDesc.Text) ||
                string.IsNullOrEmpty(textBoxType.Text))
             {
-                MessageBox.Show("Please fill out all fields");
+                MessageBox.Show("Please fill out all fields", "Invalid entry");
                 return;
             }
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxCusId.Text, "[^0-9]"))
@@ -106,23 +107,26 @@ namespace Software2
             }
             else if (outsideOfBusinessHours(startTime, endTime))
             {
-                MessageBox.Show("Please select an appointment time during business hours (9am to 5pm)");
+                MessageBox.Show("Please select an appointment time during business hours (9am to 5pm)", "Appointment Error");
                 return;
             }
             else if (textBoxUserId.Text != "1" && textBoxUserId.Text != "2")
             {
-                MessageBox.Show("Please select an active user ID.");
+                MessageBox.Show("Please select an active user ID.", "Invalid entry");
                 return;
             }
             else if (startTime > endTime)
             {
-                MessageBox.Show("Appointment start time must procede appointment end time");
+                MessageBox.Show("Appointment start time must procede appointment end time", "Appointment Error");
                 return;
+            }
+            else if (overlap)
+            {
+                MessageBox.Show("Appointment already scheduled for this time.", "Appointment Error");
             }
             else
             {
-                //DateTime start = dateTimePickerST.Value.ToLocalTime();
-                Appointment app = new Appointment(textBoxCusId.Text, textBoxUserId.Text, textBoxDesc.Text, textBoxType.Text, dateTimePickerST.Value.ToLocalTime(), dateTimePickerET.Value.ToLocalTime());
+                Appointment app = new Appointment(textBoxCusId.Text, textBoxUserId.Text, textBoxDesc.Text, textBoxType.Text, dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime());
                 string appId = this.AppointmentId;
                 DbAppointment.UpdateAppointment(app, appId);
                 _parent.DisplayDGVApp();
@@ -132,8 +136,6 @@ namespace Software2
         }
         public static bool outsideOfBusinessHours(DateTime startTime, DateTime endTime)
         {
-            startTime = startTime.ToLocalTime();
-            endTime = endTime.ToLocalTime();
             DateTime businessStart = DateTime.Today.AddHours(9);
             DateTime businessEnd = DateTime.Today.AddHours(17); // 5pm
             if (startTime.TimeOfDay > businessStart.TimeOfDay && startTime.TimeOfDay < businessEnd.TimeOfDay &&

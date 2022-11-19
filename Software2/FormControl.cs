@@ -49,7 +49,7 @@ namespace Software2
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
-           /* for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DateTime y = (DateTime)dt.Rows[i]["Start Time"];
                 dt.Rows[i]["Start Time"] = y.ToLocalTime();
@@ -58,7 +58,7 @@ namespace Software2
             {
                 DateTime y = (DateTime)dt.Rows[i]["End Time"];
                 dt.Rows[i]["End Time"] = y.ToLocalTime();
-            }*/
+            }
             AppointmentGridView.DataSource = dt;
         }        
             public static void DisplayDGV(string query, DataGridView dgv)
@@ -221,10 +221,10 @@ namespace Software2
 
         private void AppointmentGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.Value is DateTime dt)
+          /*  if (e.Value is DateTime dt)
             {
                 e.Value = dt.ToLocalTime();
-            }
+            }*/
         }
     }
 }

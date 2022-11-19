@@ -34,6 +34,28 @@ namespace Software2
 
             return null;
         }
+
+        public static DateTime getDTSQL(string query)
+        {
+            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
+            MySqlConnection conn = new MySqlConnection(sql);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            if (rdr.HasRows)
+            {
+                rdr.Read();
+                if (rdr[0] == DBNull.Value)
+                {
+                    return default;
+                }
+                DateTime dt = Convert.ToDateTime(rdr[0]);
+                return dt.ToLocalTime();
+            }
+
+            return default;
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -53,15 +75,16 @@ namespace Software2
             CustomerId = textBoxCusId.Text;
             string getCusId = ($"SELECT customerId FROM customer WHERE customerId = ({CustomerId})");
 
-            DateTime startTime = dateTimePickerST.Value.ToUniversalTime();
-            DateTime endTime = dateTimePickerET.Value.ToUniversalTime();
+            DateTime startTime = dateTimePickerST.Value;
+            DateTime endTime = dateTimePickerET.Value;
+            bool overlap = DbAppointment.Overlap(dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime());
             if (
                string.IsNullOrEmpty(textBoxCusId.Text) ||
                string.IsNullOrEmpty(textBoxUserId.Text) ||
                string.IsNullOrEmpty(textBoxDesc.Text) ||
                string.IsNullOrEmpty(textBoxType.Text))
             {
-                MessageBox.Show("Please fill out all fields");
+                MessageBox.Show("Please fill out all fields", "Invalid entry");
                 return;
             }
             string result = getSQL(getCusId);
@@ -72,29 +95,32 @@ namespace Software2
             }
             else if (textBoxUserId.Text != "1" && textBoxUserId.Text != "2")
             {
-                MessageBox.Show("Please select an active user ID.");
+                MessageBox.Show("Please select an active user ID.", "Invalid entry");
                 return;
             }
             else if (outsideOfBusinessHours(startTime, endTime))
             {
-                MessageBox.Show("Please select an appointment time during business hours (9am to 5pm).");
+                MessageBox.Show("Please select an appointment time during business hours (9am to 5pm).", "Appointment Error");
                 return;
             }
             else if (startTime > endTime)
             {
-                MessageBox.Show("Appointment start time must procede appointment end time.");
+                MessageBox.Show("Appointment start time must procede appointment end time.", "Appointment Error");
                 return;
+            }
+            else if (overlap)
+            {
+                MessageBox.Show("Appointment already scheduled for this time.", "Appointment Error");
             }
             else
             {
-                Appointment app = new Appointment(textBoxCusId.Text, textBoxUserId.Text, textBoxDesc.Text, textBoxType.Text, dateTimePickerST.Value, dateTimePickerET.Value);
+                Appointment app = new Appointment(textBoxCusId.Text, textBoxUserId.Text, textBoxDesc.Text, textBoxType.Text, dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime());
                 DbAppointment.AddAppointment(app);
                 _parent.DisplayDGVApp();
                 this.Close();
             }
 
         }
-
         private void textBoxCusId_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxCusId.Text, "[^0-9]"))
@@ -114,10 +140,8 @@ namespace Software2
         }
         public static bool outsideOfBusinessHours(DateTime startTime, DateTime endTime)
         {
-            startTime = startTime.ToLocalTime();
-            endTime = endTime.ToLocalTime();
-            DateTime businessStart = DateTime.Today.AddHours(9);
-            DateTime businessEnd = DateTime.Today.AddHours(17); // 5pm
+            DateTime businessStart = DateTime.Today.AddHours(9); // 9AM
+            DateTime businessEnd = DateTime.Today.AddHours(17); // 5PM
             if (startTime.TimeOfDay > businessStart.TimeOfDay && startTime.TimeOfDay < businessEnd.TimeOfDay &&
                 endTime.TimeOfDay > businessStart.TimeOfDay && endTime.TimeOfDay < businessEnd.TimeOfDay)
                 return false;

@@ -63,6 +63,7 @@ namespace Software2
             cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = app.type;
             cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = app.start;
             cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = app.end;
+            Appointment.Appointments.Add(app);
 
             try
             {
@@ -118,6 +119,63 @@ namespace Software2
 
             }
             conn.Close();
+        }
+        public static bool Overlap(DateTime startTime, DateTime endTime)
+        {
+            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
+            MySqlConnection conn = new MySqlConnection(sql);
+            bool overlap = false;
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT EXISTS(SELECT * FROM appointment WHERE start <= @end AND end >= @start)";
+                cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = startTime;
+                cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = endTime;
+                if (cmd.ExecuteScalar().ToString() == "1")
+                {
+                    overlap = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown checking for overlapping appointments: " + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return overlap;
+        }
+        public static bool OverlapMod(DateTime startTime, DateTime endTime, string apptId)
+        {
+            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
+            MySqlConnection conn = new MySqlConnection(sql);
+            bool overlap = false;
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT EXISTS(SELECT * FROM appointment WHERE start <= @end AND end >= @start AND appointmentId != @apptId)";
+                cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = startTime;
+                cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = endTime;
+                cmd.Parameters.Add("@apptId", MySqlDbType.Int16).Value = apptId;
+                if (cmd.ExecuteScalar().ToString() == "1")
+                {
+                    overlap = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown checking for overlapping appointments: " + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return overlap;
         }
     }
 }
