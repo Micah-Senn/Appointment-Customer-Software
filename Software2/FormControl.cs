@@ -175,7 +175,14 @@ namespace Software2
             {
                 return;
             }
-
+            foreach (DataGridViewRow row in AppointmentGridView.Rows)
+            {
+                if (CustomersGridView.CurrentRow.Cells[0].Value.ToString() == row.Cells[3].Value.ToString())
+                {
+                    MessageBox.Show("Cannot remove a customer with an appointment", "Appointment error");
+                    return;
+                }
+            }
             if (confirmDelete == DialogResult.OK && CustomersGridView.Rows.Count > 0)
             {
                 DbCustomer.DeleteCustomer(CustomersGridView.CurrentRow.Cells[0].Value.ToString());
