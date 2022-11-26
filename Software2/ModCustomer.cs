@@ -27,46 +27,7 @@ namespace Software2
 
 
         }
-        public static string getSQL(string query)
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
 
-            if (rdr.HasRows)
-            {
-                rdr.Read();
-                if (rdr[0] == DBNull.Value)
-                {
-                    return null;
-                }
-                return Convert.ToString(rdr[0]); ;
-            }
-
-            return null;
-        }
-        public static int getIntSQL(string query)
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            if (rdr.HasRows)
-            {
-                rdr.Read();
-                if (rdr[0] == DBNull.Value)
-                {
-                    return 0;
-                }
-                return Convert.ToInt32(rdr[0]); ;
-            }
-
-            return 0;
-        }
         private void ModCustomer_Load(object sender, EventArgs e)
         {
            textBoxCusId.Text = this.CusId;
@@ -78,14 +39,14 @@ namespace Software2
             string getZip = ($"SELECT postalCode FROM address WHERE addressId = ({this.AddrId})");
             string getPhone = ($"SELECT phone FROM address WHERE addressId = ({this.AddrId})");
             string getActive = ($"SELECT active FROM customer WHERE addressId = ({this.AddrId})");
-            textBoxCusName.Text = getSQL(getName);
-            textBoxAdd1.Text = getSQL(getAdd1);
-            textBoxAdd2.Text = getSQL(getAdd2);
-            textBoxCity.Text = getSQL(getCity);
-            textBoxCountry.Text = getSQL(getCountry);
-            textBoxZip.Text = getSQL(getZip);
-            textBoxPhone.Text = getSQL(getPhone);
-            comboBoxActive.SelectedIndex = getIntSQL(getActive);
+            textBoxCusName.Text = SQL.getSQL(getName);
+            textBoxAdd1.Text = SQL.getSQL(getAdd1);
+            textBoxAdd2.Text = SQL.getSQL(getAdd2);
+            textBoxCity.Text = SQL.getSQL(getCity);
+            textBoxCountry.Text = SQL.getSQL(getCountry);
+            textBoxZip.Text = SQL.getSQL(getZip);
+            textBoxPhone.Text = SQL.getSQL(getPhone);
+            comboBoxActive.SelectedIndex = SQL.getIntSQL(getActive);
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,8 +30,7 @@ namespace Software2
         }
         public void DisplayDGV()
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT customerId AS 'Customer ID', appointmentId AS 'Appointment ID', userId AS 'User ID', description AS 'Description', type AS 'Type'," +
                 " start AS 'Start Time', end AS 'End Time' FROM software2.appointment WHERE customerId = @customerId";
@@ -57,10 +57,8 @@ namespace Software2
         }
         private void LoadCustomersId()
         {
-            var connectionString = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            using (var connection = new MySqlConnection(connectionString))
+            using (var connection = SQL.GetConnection())
             {
-                connection.Open();
                 var query = "SELECT customerId FROM customer";
                 using (var command = new MySqlCommand(query, connection))
                 {

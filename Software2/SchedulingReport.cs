@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +24,7 @@ namespace Software2
         }
         public void DisplayDGV1()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
+            MySqlConnection con = SQL.GetConnection();
 
             string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
                 "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE userId = 1";
@@ -36,8 +36,7 @@ namespace Software2
         }
         public void DisplayDGV2()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
+            MySqlConnection con = SQL.GetConnection();
 
             string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
                 "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE userId = 2";

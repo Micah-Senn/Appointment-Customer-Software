@@ -18,34 +18,31 @@ namespace Software2
         {
             InitializeComponent();
         }
-
-        public static MySqlConnection GetConnection()
+        public void AppointmentReminder()
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            try
+            foreach (DataGridViewRow row in AppointmentGridView.Rows)
             {
-                conn.Open();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Connection not established." + ex.Message);
 
+                DateTime start = DateTime.Parse(row.Cells[6].Value.ToString()).ToUniversalTime();
+                DateTime now = DateTime.UtcNow;
+                TimeSpan nowSubStart = now - start;
+                if (nowSubStart.TotalMinutes >= -15 && nowSubStart.TotalMinutes < 1)
+                {
+                    MessageBox.Show($"You have a meeting with {row.Cells[2].Value} at {row.Cells[6].Value}.", "Appointment Reminder");
+                }
             }
-            return conn;
         }
         private void FormControl_Load(object sender, EventArgs e)
         {
             DisplayDGVApp();
-           
+            AppointmentReminder();
         }
         public void DisplayDGVApp()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
-
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', start AS 'Start Time', end AS 'End Time' FROM appointment";
-            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
+            MySqlConnection conn = SQL.GetConnection();
+            string sqlStringApp = "SELECT appointment.appointmentId AS 'Appointment ID', appointment.userId AS 'User ID', customer.customerName AS 'Customer Name', appointment.customerId AS 'Customer ID', appointment.description AS 'Description', appointment.type AS 'Type', appointment.start AS 'Start Time', appointment.end AS 'End Time' FROM appointment" +
+                " INNER JOIN customer ON appointment.customerId=customer.customerId";
+            MySqlCommand cmda = new MySqlCommand(sqlStringApp, conn);
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
             DataTable dt = new DataTable();
             adpa.Fill(dt);
@@ -64,7 +61,7 @@ namespace Software2
             public static void DisplayDGV(string query, DataGridView dgv)
         {
             string sql = query;
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable tbl = new DataTable();

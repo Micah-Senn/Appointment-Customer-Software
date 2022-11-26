@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,52 +19,10 @@ namespace Software2
             InitializeComponent();
             _parent = parent;
         }
-        public static string getSQL(string query)
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            if (rdr.HasRows)
-            {
-                rdr.Read();
-                if (rdr[0] == DBNull.Value)
-                {
-                    return null;
-                }
-                return Convert.ToString(rdr[0]);
-            }
-
-            return null;
-        }
-        public static DateTime getDTSQL(string query)
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-
-            if (rdr.HasRows)
-            {
-                rdr.Read();
-                if (rdr[0] == DBNull.Value)
-                {
-                    return default;
-                }
-                DateTime dt = Convert.ToDateTime(rdr[0]);
-                return dt.ToLocalTime();
-            }
-
-            return default;
-        }
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void ModAppointment_Load(object sender, EventArgs e)
         {
             textBoxAppId.Text = this.AppointmentId;
@@ -73,14 +32,13 @@ namespace Software2
             string getType = ($"SELECT type FROM appointment WHERE appointmentId = ({this.AppointmentId})");
             string getSt = ($"SELECT start FROM appointment WHERE appointmentId = ({this.AppointmentId})");
             string getEt = ($"SELECT end FROM appointment WHERE appointmentId = ({this.AppointmentId})");
-            textBoxUserId.Text = getSQL(getUserId);
-            textBoxCusId.Text = getSQL(getCusId);
-            textBoxDesc.Text = getSQL(getDesc);
-            textBoxType.Text = getSQL(getType);
-            dateTimePickerST.Value = getDTSQL(getSt);
-            dateTimePickerET.Value = getDTSQL(getEt);
+            textBoxUserId.Text = SQL.getSQL(getUserId);
+            textBoxCusId.Text = SQL.getSQL(getCusId);
+            textBoxDesc.Text = SQL.getSQL(getDesc);
+            textBoxType.Text = SQL.getSQL(getType);
+            dateTimePickerST.Value = SQL.getDTSQL(getSt);
+            dateTimePickerET.Value = SQL.getDTSQL(getEt);
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             DateTime startTime = dateTimePickerST.Value;

@@ -32,10 +32,7 @@ namespace Software2
         }
         public static int getID(string id, string table)
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
+            MySqlConnection conn = SQL.GetConnection();
             string query = $"SELECT max({id}) FROM {table}";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();

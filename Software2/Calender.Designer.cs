@@ -57,6 +57,7 @@ namespace Software2
             this.radioWeek.Size = new System.Drawing.Size(223, 32);
             this.radioWeek.TabIndex = 2;
             this.radioWeek.TabStop = true;
+            this.radioWeek.Tag = "WHERE YEARWEEK(`start`) = YEARWEEK(CURDATE())";
             this.radioWeek.Text = "Weekly Appointments";
             this.radioWeek.UseVisualStyleBackColor = true;
             this.radioWeek.CheckedChanged += new System.EventHandler(this.radioWeek_CheckedChanged);
@@ -70,6 +71,8 @@ namespace Software2
             this.radioMonth.Size = new System.Drawing.Size(234, 32);
             this.radioMonth.TabIndex = 3;
             this.radioMonth.TabStop = true;
+            this.radioMonth.Tag = "WHERE MONTH(start) = MONTH(CURRENT_DATE()) AND YEAR(start) = YEAR(CURRENT_DATE())" +
+    "";
             this.radioMonth.Text = "Monthly Appointments";
             this.radioMonth.UseVisualStyleBackColor = true;
             this.radioMonth.CheckedChanged += new System.EventHandler(this.radioMonth_CheckedChanged);
@@ -83,6 +86,7 @@ namespace Software2
             this.radioAll.Size = new System.Drawing.Size(183, 32);
             this.radioAll.TabIndex = 1;
             this.radioAll.TabStop = true;
+            this.radioAll.Tag = "";
             this.radioAll.Text = "All Appointments";
             this.radioAll.UseVisualStyleBackColor = true;
             this.radioAll.CheckedChanged += new System.EventHandler(this.radioAll_CheckedChanged);

@@ -1,10 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -15,19 +17,7 @@ namespace Software2
         public Calender()
         {
             InitializeComponent();
-            if (radioAll.Checked)
-            {
-                DisplayDGVApp();
-                this.Refresh();
-            }
-            else if (radioWeek.Checked)
-            {
-                this.Refresh();
-            }
-            else if (radioMonth.Checked)
-            {
-                this.Refresh();
-            }
+            radioAll.Checked = true;
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -39,67 +29,39 @@ namespace Software2
         {
 
         }
-        public void DisplayDGVApp()
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
 
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
-                "start AS 'Start Time', end AS 'End Time' FROM appointment";
-            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
-            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
-            DataTable dt = new DataTable();
-            adpa.Fill(dt);
-            dataGridViewCal.DataSource = dt;
-        }
-        public void DisplayDGVWeek()
+        public void DisplayLAMBDA()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
-
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type'," +
-                " start AS 'Start Time', end AS 'End Time' FROM software2.appointment WHERE  YEARWEEK(`start`) = YEARWEEK(CURDATE())";
-            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
-            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
+            var checkedButton = this.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked); // LAMBDA EXPRESSION. I saved dozens of lines of codes by using a lambda to determine the radio button selected then passing the button specific queries through a variable in the buttons Tag attribute.
+            string tag = checkedButton.Tag.ToString();
+            MySqlConnection conn = SQL.GetConnection();
+            MySqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = $"SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', start AS 'Start Time', end AS 'End Time' FROM software2.appointment {tag};";
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
-            adpa.Fill(dt);
-            dataGridViewCal.DataSource = dt;
-        }
-        public void DisplayDGVMonth()
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-            MySqlConnection con = new MySqlConnection(connectionString);
-
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
-                "start AS 'Start Time', end AS 'End Time' FROM software2.appointment WHERE MONTH(start) = MONTH(CURRENT_DATE()) AND YEAR(start) = YEAR(CURRENT_DATE())";
-            MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
-            MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
-            DataTable dt = new DataTable();
-            adpa.Fill(dt);
+            adp.Fill(dt);
             dataGridViewCal.DataSource = dt;
         }
 
         private void Calender_Load(object sender, EventArgs e)
         {
-
+            DisplayLAMBDA();
         }
 
         private void radioAll_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayDGVApp();
-            this.Refresh();
+            DisplayLAMBDA();
         }
 
         private void radioWeek_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayDGVWeek();
-            this.Refresh();
+            DisplayLAMBDA();
         }
 
         private void radioMonth_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayDGVMonth();
-            this.Refresh();
+            DisplayLAMBDA();
         }
 
         private void dataGridViewCal_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

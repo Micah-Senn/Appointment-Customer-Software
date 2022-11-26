@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,13 +32,11 @@ namespace Software2
         public void DisplayDGV()
         {
             var checkedButton = this.Controls.OfType<RadioButton>()
-                                      .FirstOrDefault(r => r.Checked); // LAMBDA EXPLAIN HERE
+                                      .FirstOrDefault(r => r.Checked); // LAMBDA EXPRESSION. Using a lambda expression here saved a lot of code and is more efficient than iterating through many if statements to determine the radio button in use.
             var tag = checkedButton.Tag;
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT COUNT(DISTINCT type) AS 'Type Count' FROM appointment WHERE MONTH(start) = @month;";
-            cmd.Parameters.Add("@month", MySqlDbType.Int16).Value = tag;
+            cmd.CommandText = $"SELECT COUNT(DISTINCT type) AS 'Type Count' FROM appointment WHERE MONTH(start) = {tag};";
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);

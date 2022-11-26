@@ -15,7 +15,7 @@ namespace Software2
 
     public partial class FormLogin : Form
     {
-        int userId;
+        public static int userId;
         public string error = "The username or password you entered was incorrect";
         public FormLogin()
         {
@@ -65,8 +65,6 @@ namespace Software2
         }
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-           textBoxUser.Text = "test"; //FIXME 
-            textBoxPass.Text = "test";
             using (StreamWriter txt = new StreamWriter("login.txt", true))
             {
                 string time = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
@@ -102,7 +100,8 @@ namespace Software2
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-
+            textBoxUser.Text = "test";
+            textBoxPass.Text = "test";
         }
     }
         
