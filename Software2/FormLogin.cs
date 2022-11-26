@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
+using Software2.Database;
+using MySql.Data.MySqlClient;
 
 namespace Software2
 {
@@ -20,9 +22,10 @@ namespace Software2
         public FormLogin()
         {
             InitializeComponent();
+            User();
 
 
-            if (RegionInfo.CurrentRegion.EnglishName == "Mexico")
+            if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "es")
             {
                 labelLanguage.Text = "Idioma Actual: Español";
                 labelLogin.Text = "Inicio de sesión del sistema";
@@ -47,7 +50,29 @@ namespace Software2
             }
 
         }
+        public static void User()
+        {
+            MySqlConnection conn = SQL.GetConnection();
+            try
+            {
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT EXISTS(SELECT * FROM user WHERE userId = 2)";
 
+                if (cmd.ExecuteScalar().ToString() != "1")
+                {
+                    DbUser.AddUser();
+                }
+                else return;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception thrown checking for second user: " + ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         private void labelUsername_Click(object sender, EventArgs e)
         {
 

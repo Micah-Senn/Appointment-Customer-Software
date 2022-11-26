@@ -26,7 +26,7 @@ namespace Software2
                 DateTime start = DateTime.Parse(row.Cells[6].Value.ToString()).ToUniversalTime();
                 DateTime now = DateTime.UtcNow;
                 TimeSpan nowSubStart = now - start;
-                if (nowSubStart.TotalMinutes >= -15 && nowSubStart.TotalMinutes < 1)
+                if (nowSubStart.TotalMinutes >= -15 && nowSubStart.TotalMinutes < 1 && FormLogin.userId == Int32.Parse(row.Cells[1].Value.ToString()))
                 {
                     MessageBox.Show($"You have a meeting with {row.Cells[2].Value} at {row.Cells[6].Value}.", "Appointment Reminder");
                 }

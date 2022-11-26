@@ -114,5 +114,10 @@ namespace Software2
 
 
         }
+
+        private void labelDesc_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

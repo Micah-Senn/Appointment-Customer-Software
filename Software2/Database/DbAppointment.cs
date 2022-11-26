@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,27 +10,9 @@ namespace Software2
 {
     class DbAppointment
     {
-        public static MySqlConnection GetConnection()
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            try
-            {
-                conn.Open();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Connection not established." + ex.Message);
-
-            }
-            return conn;
-        }
         public static int getID(string id, string table)
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
+            MySqlConnection conn = SQL.GetConnection();
             string query = $"SELECT max({id}) FROM {table}";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -52,8 +35,8 @@ namespace Software2
         public static void AddAppointment(Appointment app)
         {
             int appointmentId = getID("appointmentId", "appointment") + 1;
-            MySqlConnection conn = GetConnection();
-            string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, NULL, @description, NULL, NULL, @type, NULL, @start, @end, NULL, NULL, NULL, NULL)";
+            MySqlConnection conn = SQL.GetConnection();
+            string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, 'not needed', @description, 'not needed', 'not needed', @type, 'not needed', @start, @end, @now, 'not needed', @now, 'not needed')";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
@@ -63,6 +46,7 @@ namespace Software2
             cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = app.type;
             cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = app.start;
             cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = app.end;
+            cmd.Parameters.Add("@now", MySqlDbType.DateTime).Value = DateTime.Now.ToUniversalTime();
             Appointment.Appointments.Add(app);
 
             try
@@ -80,7 +64,7 @@ namespace Software2
         public static void DeleteAppointment(string id)
         {
             string sql = "DELETE FROM appointment WHERE appointmentId = @appointmentId";
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@appointmentId", MySqlDbType.Int32).Value = id;
@@ -98,7 +82,7 @@ namespace Software2
         public static void UpdateAppointment(Appointment app, string id)
         {
             string sql = $"UPDATE appointment SET customerId = @customerId, userId = @userId, description = @description, type = @type, start = @start, end = @end WHERE appointmentId = {id}";
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@customerId", MySqlDbType.VarChar).Value = app.customerId;
@@ -122,12 +106,10 @@ namespace Software2
         }
         public static bool Overlap(DateTime startTime, DateTime endTime)
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
+            MySqlConnection conn = SQL.GetConnection();
             bool overlap = false;
             try
             {
-                conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "SELECT EXISTS(SELECT * FROM appointment WHERE start <= @end AND end >= @start)";
                 cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = startTime;
@@ -150,12 +132,10 @@ namespace Software2
         }
         public static bool OverlapMod(DateTime startTime, DateTime endTime, string apptId)
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
+            MySqlConnection conn = SQL.GetConnection();
             bool overlap = false;
             try
             {
-                conn.Open();
                 MySqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "SELECT EXISTS(SELECT * FROM appointment WHERE start <= @end AND end >= @start AND appointmentId != @apptId)";
                 cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = startTime;
