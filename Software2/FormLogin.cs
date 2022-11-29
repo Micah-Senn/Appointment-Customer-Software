@@ -125,8 +125,6 @@ namespace Software2
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            textBoxUser.Text = "test";
-            textBoxPass.Text = "test";
         }
     }
         

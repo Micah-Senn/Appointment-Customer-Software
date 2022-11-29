@@ -102,8 +102,8 @@ namespace Software2
         {
             DateTime businessStart = DateTime.Today.AddHours(9); // 9AM
             DateTime businessEnd = DateTime.Today.AddHours(17); // 5PM
-            if (startTime.TimeOfDay > businessStart.TimeOfDay && startTime.TimeOfDay < businessEnd.TimeOfDay &&
-                endTime.TimeOfDay > businessStart.TimeOfDay && endTime.TimeOfDay < businessEnd.TimeOfDay)
+            if (startTime.TimeOfDay >= businessStart.TimeOfDay && startTime.TimeOfDay <= businessEnd.TimeOfDay &&
+                endTime.TimeOfDay >= businessStart.TimeOfDay && endTime.TimeOfDay <= businessEnd.TimeOfDay)
                 return false;
 
             return true;
