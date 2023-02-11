@@ -44,6 +44,8 @@ namespace Software2
             this.AppointmentGridView = new System.Windows.Forms.DataGridView();
             this.CustomersGridView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBoxSearchApp = new System.Windows.Forms.TextBox();
+            this.textBoxSearchCus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.AppointmentGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CustomersGridView)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +68,7 @@ namespace Software2
             this.buttonAddApp.Location = new System.Drawing.Point(650, 264);
             this.buttonAddApp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonAddApp.Name = "buttonAddApp";
-            this.buttonAddApp.Size = new System.Drawing.Size(100, 45);
+            this.buttonAddApp.Size = new System.Drawing.Size(100, 27);
             this.buttonAddApp.TabIndex = 1;
             this.buttonAddApp.Text = "Add";
             this.buttonAddApp.UseVisualStyleBackColor = true;
@@ -78,7 +80,7 @@ namespace Software2
             this.buttonModifyApp.Location = new System.Drawing.Point(760, 264);
             this.buttonModifyApp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonModifyApp.Name = "buttonModifyApp";
-            this.buttonModifyApp.Size = new System.Drawing.Size(100, 45);
+            this.buttonModifyApp.Size = new System.Drawing.Size(100, 27);
             this.buttonModifyApp.TabIndex = 2;
             this.buttonModifyApp.Text = "Modify";
             this.buttonModifyApp.UseVisualStyleBackColor = true;
@@ -90,7 +92,7 @@ namespace Software2
             this.buttonDeleteApp.Location = new System.Drawing.Point(870, 264);
             this.buttonDeleteApp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonDeleteApp.Name = "buttonDeleteApp";
-            this.buttonDeleteApp.Size = new System.Drawing.Size(100, 45);
+            this.buttonDeleteApp.Size = new System.Drawing.Size(100, 27);
             this.buttonDeleteApp.TabIndex = 3;
             this.buttonDeleteApp.Text = "Delete";
             this.buttonDeleteApp.UseVisualStyleBackColor = true;
@@ -140,7 +142,7 @@ namespace Software2
             this.buttonCal.Name = "buttonCal";
             this.buttonCal.Size = new System.Drawing.Size(176, 29);
             this.buttonCal.TabIndex = 7;
-            this.buttonCal.Text = "View Calender";
+            this.buttonCal.Text = "View Calendar";
             this.buttonCal.UseVisualStyleBackColor = true;
             this.buttonCal.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -183,10 +185,10 @@ namespace Software2
             // buttonExit
             // 
             this.buttonExit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonExit.Location = new System.Drawing.Point(794, 569);
+            this.buttonExit.Location = new System.Drawing.Point(794, 549);
             this.buttonExit.Margin = new System.Windows.Forms.Padding(5);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(176, 29);
+            this.buttonExit.Size = new System.Drawing.Size(176, 45);
             this.buttonExit.TabIndex = 11;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -248,12 +250,32 @@ namespace Software2
             this.label1.TabIndex = 14;
             this.label1.Text = "Customers";
             // 
+            // textBoxSearchApp
+            // 
+            this.textBoxSearchApp.Location = new System.Drawing.Point(760, 22);
+            this.textBoxSearchApp.Name = "textBoxSearchApp";
+            this.textBoxSearchApp.PlaceholderText = "Search Appointments";
+            this.textBoxSearchApp.Size = new System.Drawing.Size(210, 23);
+            this.textBoxSearchApp.TabIndex = 16;
+            this.textBoxSearchApp.TextChanged += new System.EventHandler(this.textBoxSearchApp_TextChanged);
+            // 
+            // textBoxSearchCus
+            // 
+            this.textBoxSearchCus.Location = new System.Drawing.Point(540, 311);
+            this.textBoxSearchCus.Name = "textBoxSearchCus";
+            this.textBoxSearchCus.PlaceholderText = "Search Customers";
+            this.textBoxSearchCus.Size = new System.Drawing.Size(210, 23);
+            this.textBoxSearchCus.TabIndex = 17;
+            this.textBoxSearchCus.TextChanged += new System.EventHandler(this.textBoxSearchCus_TextChanged);
+            // 
             // FormControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(984, 608);
+            this.Controls.Add(this.textBoxSearchCus);
+            this.Controls.Add(this.textBoxSearchApp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CustomersGridView);
             this.Controls.Add(this.AppointmentGridView);
@@ -300,5 +322,7 @@ namespace Software2
         private System.Windows.Forms.DataGridView AppointmentGridView;
         private System.Windows.Forms.DataGridView CustomersGridView;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxSearchApp;
+        private System.Windows.Forms.TextBox textBoxSearchCus;
     }
 }

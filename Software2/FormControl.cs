@@ -223,5 +223,26 @@ namespace Software2
                 e.Value = dt.ToLocalTime();
             }*/
         }
+
+        private void buttonSearchCus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSearchCus_TextChanged(object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = CustomersGridView.DataSource;
+            bs.Filter = string.Format("[Customer Name] like '{0}%' OR [Phone Number] like '{0}%'", textBoxSearchCus.Text);
+            CustomersGridView.DataSource = bs;
+        }
+
+        private void textBoxSearchApp_TextChanged(object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = AppointmentGridView.DataSource;
+            bs.Filter = string.Format("[Customer Name] like '{0}%' OR [Type] like '{0}%' OR [Description] like '{0}%'", textBoxSearchApp.Text);
+            AppointmentGridView.DataSource = bs;
+        }
     }
 }

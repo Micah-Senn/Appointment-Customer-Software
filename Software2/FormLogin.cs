@@ -103,6 +103,11 @@ namespace Software2
             textBoxUser.Text = "test";
             textBoxPass.Text = "test";
         }
+
+        private void textBoxUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
         
 }
