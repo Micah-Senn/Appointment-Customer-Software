@@ -12,7 +12,6 @@ namespace Software2
     {
         public static int getID(string id, string table)
         {
-
             MySqlConnection conn = SQL.GetConnection();
             string query = $"SELECT max({id}) FROM {table}";
             MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -37,7 +36,9 @@ namespace Software2
         {
             int appointmentId = getID("appointmentId", "appointment") + 1;
             MySqlConnection conn = SQL.GetConnection();
+
             string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, NULL, @description, NULL, NULL, @type, NULL, @start, @end, NULL, NULL, NULL, NULL)";
+
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
@@ -47,6 +48,7 @@ namespace Software2
             cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = app.type;
             cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = app.start;
             cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = app.end;
+            cmd.Parameters.Add("@now", MySqlDbType.DateTime).Value = DateTime.Now.ToUniversalTime();
             Appointment.Appointments.Add(app);
 
             try

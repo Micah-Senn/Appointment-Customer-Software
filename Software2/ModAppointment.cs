@@ -14,6 +14,8 @@ namespace Software2
     {
         private readonly FormControl _parent;
         public string AppointmentId { get; set; }
+        public string CustomerId { get; set; }
+        public string UserId { get; set; }
         public ModAppointment(FormControl parent)
         {
             InitializeComponent();
@@ -43,6 +45,12 @@ namespace Software2
         {
             DateTime startTime = dateTimePickerST.Value;
             DateTime endTime = dateTimePickerET.Value;
+            CustomerId = textBoxCusId.Text;
+            UserId = textBoxUserId.Text;
+            string getCusId = ($"SELECT customerId FROM customer WHERE customerId = ({CustomerId})");
+            string getUserId = ($"SELECT userId FROM user WHERE userId = ({UserId})");
+            string cresult = SQL.getSQL(getCusId);
+            string uresult = SQL.getSQL(getUserId);
             bool overlap = DbAppointment.OverlapMod(dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime(), this.AppointmentId);
             if (
                string.IsNullOrEmpty(textBoxUserId.Text) ||
@@ -63,14 +71,19 @@ namespace Software2
                 MessageBox.Show("Please enter a valid User ID", "Invalid entry");
                 return;
             }
+            else if (cresult == null)
+            {
+                MessageBox.Show("Customer ID not found, please enter a valid customer ID.", "Invalid entry");
+                return;
+            }
+            else if (uresult == null)
+            {
+                MessageBox.Show("User ID not found, please enter a valid user ID.", "Invalid entry");
+                return;
+            }
             else if (outsideOfBusinessHours(startTime, endTime))
             {
                 MessageBox.Show("Please select an appointment time during business hours (9am to 5pm)", "Appointment Error");
-                return;
-            }
-            else if (textBoxUserId.Text != "1" && textBoxUserId.Text != "2")
-            {
-                MessageBox.Show("Please select an active user ID.", "Invalid entry");
                 return;
             }
             else if (startTime > endTime)

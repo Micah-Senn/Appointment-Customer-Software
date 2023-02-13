@@ -33,7 +33,7 @@ namespace Software2
             MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "SELECT customerId AS 'Customer ID', appointmentId AS 'Appointment ID', userId AS 'User ID', description AS 'Description', type AS 'Type'," +
-                " start AS 'Start Time', end AS 'End Time' FROM software2.appointment WHERE customerId = @customerId";
+                " start AS 'Start Time', end AS 'End Time' FROM appointment WHERE customerId = @customerId";
             cmd.Parameters.Add("@customerId", MySqlDbType.Int16).Value = comboBoxCus.SelectedIndex + 1;
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();

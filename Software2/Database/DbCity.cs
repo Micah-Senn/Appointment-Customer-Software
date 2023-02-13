@@ -9,27 +9,9 @@ namespace Software2.Database
 {
     class DbCity
     {
-        public static MySqlConnection GetConnection()
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            try
-            {
-                conn.Open();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Connection not established." + ex.Message);
-
-            }
-            return conn;
-        }
         public static int getID(string id, string table)
         {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
+            MySqlConnection conn = SQL.GetConnection();
             string query = $"SELECT max({id}) FROM {table}";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -55,13 +37,14 @@ namespace Software2.Database
         {
             int cityId = getID("cityId", "city") + 1;
             int countryId = getID("countryId", "country");
-            string sql = "INSERT INTO city VALUES (@cityId, @city, @countryId, NULL, NULL, NULL, NULL)";
-            MySqlConnection conn = GetConnection();
+            string sql = "INSERT INTO city VALUES (@cityId, @city, @countryId, @now, 'not needed', @now, 'not needed')";
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@cityId", MySqlDbType.VarChar).Value = cityId;
             cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = cty.city;
             cmd.Parameters.Add("@countryId", MySqlDbType.VarChar).Value = countryId;
+            cmd.Parameters.Add("@now", MySqlDbType.DateTime).Value = DateTime.Now.ToUniversalTime();
 
             try
             {
@@ -77,7 +60,7 @@ namespace Software2.Database
         public static void UpdateCity(City city, string id)
         {
             string sql = "UPDATE city SET city = @city WHERE cityId = @cityId";
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = city.city;
@@ -98,7 +81,7 @@ namespace Software2.Database
         public static void DeleteCity(string id)
         {
             string sql = "DELETE FROM city WHERE cityId = @cityId";
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@cityId", MySqlDbType.Int32).Value = id;
