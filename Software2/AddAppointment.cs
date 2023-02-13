@@ -27,16 +27,18 @@ namespace Software2
 
         private void AddAppointment_Load(object sender, EventArgs e)
         {
-
+            dateTimePickerST.Value = DateTime.Now;
+            dateTimePickerET.Value = DateTime.Now;
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             CustomerId = textBoxCusId.Text;
             string getCusId = ($"SELECT customerId FROM customer WHERE customerId = ({CustomerId})");
 
+
             DateTime startTime = dateTimePickerST.Value;
             DateTime endTime = dateTimePickerET.Value;
-            bool overlap = DbAppointment.Overlap(dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime());
+            bool overlap = DbAppointment.Overlap(startTime.ToUniversalTime(), endTime.ToUniversalTime());
 
             if (
                string.IsNullOrEmpty(textBoxCusId.Text) ||
@@ -112,6 +114,16 @@ namespace Software2
         private void dateTimePickerST_ValueChanged(object sender, EventArgs e)
         {
 
+
+        }
+
+        private void labelType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDesc_Click(object sender, EventArgs e)
+        {
 
         }
     }

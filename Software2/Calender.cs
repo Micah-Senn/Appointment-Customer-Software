@@ -37,7 +37,7 @@ namespace Software2
             string tag = checkedButton.Tag.ToString();
             MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', start AS 'Start Time', end AS 'End Time' FROM software2.appointment {tag};";
+            cmd.CommandText = $"SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', car AS 'Vehicle', type AS 'Type', start AS 'Start Time', end AS 'End Time' FROM software2.appointment {tag};";
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);

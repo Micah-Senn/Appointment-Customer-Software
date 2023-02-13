@@ -37,13 +37,13 @@ namespace Software2
         {
             int appointmentId = getID("appointmentId", "appointment") + 1;
             MySqlConnection conn = SQL.GetConnection();
-            string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, NULL, @description, NULL, NULL, @type, NULL, @start, @end, NULL, NULL, NULL, NULL)";
+            string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, NULL, @car, NULL, NULL, @type, NULL, @start, @end, NULL, NULL, NULL, NULL)";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;
             cmd.Parameters.Add("@customerId", MySqlDbType.Int16).Value = app.customerId;
             cmd.Parameters.Add("@userId", MySqlDbType.Int16).Value = app.userId;
-            cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = app.description;
+            cmd.Parameters.Add("@car", MySqlDbType.VarChar).Value = app.car;
             cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = app.type;
             cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = app.start;
             cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = app.end;
@@ -81,13 +81,13 @@ namespace Software2
         }
         public static void UpdateAppointment(Appointment app, string id)
         {
-            string sql = $"UPDATE appointment SET customerId = @customerId, userId = @userId, description = @description, type = @type, start = @start, end = @end WHERE appointmentId = {id}";
+            string sql = $"UPDATE appointment SET customerId = @customerId, userId = @userId, car = @car, type = @type, start = @start, end = @end WHERE appointmentId = {id}";
             MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@customerId", MySqlDbType.VarChar).Value = app.customerId;
             cmd.Parameters.Add("@userId", MySqlDbType.VarChar).Value = app.userId;
-            cmd.Parameters.Add("@description", MySqlDbType.VarChar).Value = app.description;
+            cmd.Parameters.Add("@car", MySqlDbType.VarChar).Value = app.car;
             cmd.Parameters.Add("@type", MySqlDbType.VarChar).Value = app.type;
             cmd.Parameters.Add("@start", MySqlDbType.DateTime).Value = app.start;
             cmd.Parameters.Add("@end", MySqlDbType.DateTime).Value = app.end;

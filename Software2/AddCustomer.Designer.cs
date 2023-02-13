@@ -36,18 +36,17 @@ namespace Software2
             this.labelZip = new System.Windows.Forms.Label();
             this.labelCountry = new System.Windows.Forms.Label();
             this.labelCity = new System.Windows.Forms.Label();
-            this.labelAdd2 = new System.Windows.Forms.Label();
             this.labelAdd1 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.textBoxAdd2 = new System.Windows.Forms.TextBox();
             this.textBoxAdd1 = new System.Windows.Forms.TextBox();
             this.textBoxCusName = new System.Windows.Forms.TextBox();
             this.labelMain = new System.Windows.Forms.Label();
             this.comboBoxActive = new System.Windows.Forms.ComboBox();
             this.textBoxCity = new System.Windows.Forms.TextBox();
-            this.textBoxCountry = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.MaskedTextBox();
             this.textBoxZip = new System.Windows.Forms.TextBox();
+            this.comboBoxState = new System.Windows.Forms.ComboBox();
+            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             this.SuspendLayout();
             // 
             // buttonExit
@@ -76,7 +75,7 @@ namespace Software2
             // 
             this.labelActive.AutoSize = true;
             this.labelActive.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelActive.Location = new System.Drawing.Point(21, 319);
+            this.labelActive.Location = new System.Drawing.Point(17, 290);
             this.labelActive.Name = "labelActive";
             this.labelActive.Size = new System.Drawing.Size(51, 19);
             this.labelActive.TabIndex = 75;
@@ -86,7 +85,7 @@ namespace Software2
             // 
             this.labelPhone.AutoSize = true;
             this.labelPhone.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelPhone.Location = new System.Drawing.Point(21, 290);
+            this.labelPhone.Location = new System.Drawing.Point(17, 260);
             this.labelPhone.Name = "labelPhone";
             this.labelPhone.Size = new System.Drawing.Size(110, 19);
             this.labelPhone.TabIndex = 74;
@@ -96,7 +95,7 @@ namespace Software2
             // 
             this.labelZip.AutoSize = true;
             this.labelZip.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelZip.Location = new System.Drawing.Point(21, 261);
+            this.labelZip.Location = new System.Drawing.Point(21, 225);
             this.labelZip.Name = "labelZip";
             this.labelZip.Size = new System.Drawing.Size(64, 19);
             this.labelZip.TabIndex = 73;
@@ -106,31 +105,22 @@ namespace Software2
             // 
             this.labelCountry.AutoSize = true;
             this.labelCountry.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCountry.Location = new System.Drawing.Point(21, 230);
+            this.labelCountry.Location = new System.Drawing.Point(21, 196);
             this.labelCountry.Name = "labelCountry";
-            this.labelCountry.Size = new System.Drawing.Size(63, 19);
+            this.labelCountry.Size = new System.Drawing.Size(43, 19);
             this.labelCountry.TabIndex = 72;
-            this.labelCountry.Text = "Country";
+            this.labelCountry.Text = "State";
+            this.labelCountry.Click += new System.EventHandler(this.labelCountry_Click);
             // 
             // labelCity
             // 
             this.labelCity.AutoSize = true;
             this.labelCity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCity.Location = new System.Drawing.Point(21, 197);
+            this.labelCity.Location = new System.Drawing.Point(21, 164);
             this.labelCity.Name = "labelCity";
             this.labelCity.Size = new System.Drawing.Size(35, 19);
             this.labelCity.TabIndex = 71;
             this.labelCity.Text = "City";
-            // 
-            // labelAdd2
-            // 
-            this.labelAdd2.AutoSize = true;
-            this.labelAdd2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAdd2.Location = new System.Drawing.Point(21, 164);
-            this.labelAdd2.Name = "labelAdd2";
-            this.labelAdd2.Size = new System.Drawing.Size(106, 19);
-            this.labelAdd2.TabIndex = 70;
-            this.labelAdd2.Text = "Address Line 2";
             // 
             // labelAdd1
             // 
@@ -138,9 +128,9 @@ namespace Software2
             this.labelAdd1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelAdd1.Location = new System.Drawing.Point(21, 131);
             this.labelAdd1.Name = "labelAdd1";
-            this.labelAdd1.Size = new System.Drawing.Size(106, 19);
+            this.labelAdd1.Size = new System.Drawing.Size(63, 19);
             this.labelAdd1.TabIndex = 69;
-            this.labelAdd1.Text = "Address Line 1";
+            this.labelAdd1.Text = "Address";
             // 
             // labelName
             // 
@@ -151,14 +141,6 @@ namespace Software2
             this.labelName.Size = new System.Drawing.Size(117, 19);
             this.labelName.TabIndex = 68;
             this.labelName.Text = "Customer Name";
-            // 
-            // textBoxAdd2
-            // 
-            this.textBoxAdd2.Location = new System.Drawing.Point(146, 164);
-            this.textBoxAdd2.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxAdd2.Name = "textBoxAdd2";
-            this.textBoxAdd2.Size = new System.Drawing.Size(216, 23);
-            this.textBoxAdd2.TabIndex = 3;
             // 
             // textBoxAdd1
             // 
@@ -194,30 +176,22 @@ namespace Software2
             this.comboBoxActive.Items.AddRange(new object[] {
             "False",
             "True"});
-            this.comboBoxActive.Location = new System.Drawing.Point(146, 319);
+            this.comboBoxActive.Location = new System.Drawing.Point(146, 290);
             this.comboBoxActive.Name = "comboBoxActive";
             this.comboBoxActive.Size = new System.Drawing.Size(216, 23);
             this.comboBoxActive.TabIndex = 8;
             // 
             // textBoxCity
             // 
-            this.textBoxCity.Location = new System.Drawing.Point(146, 197);
+            this.textBoxCity.Location = new System.Drawing.Point(146, 164);
             this.textBoxCity.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(216, 23);
             this.textBoxCity.TabIndex = 4;
             // 
-            // textBoxCountry
-            // 
-            this.textBoxCountry.Location = new System.Drawing.Point(146, 230);
-            this.textBoxCountry.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxCountry.Name = "textBoxCountry";
-            this.textBoxCountry.Size = new System.Drawing.Size(216, 23);
-            this.textBoxCountry.TabIndex = 5;
-            // 
             // textBoxPhone
             // 
-            this.textBoxPhone.Location = new System.Drawing.Point(146, 290);
+            this.textBoxPhone.Location = new System.Drawing.Point(146, 260);
             this.textBoxPhone.Mask = "(999) 000-0000";
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(216, 23);
@@ -226,10 +200,77 @@ namespace Software2
             // 
             // textBoxZip
             // 
-            this.textBoxZip.Location = new System.Drawing.Point(146, 261);
+            this.textBoxZip.Location = new System.Drawing.Point(146, 225);
             this.textBoxZip.Name = "textBoxZip";
             this.textBoxZip.Size = new System.Drawing.Size(216, 23);
             this.textBoxZip.TabIndex = 6;
+            // 
+            // comboBoxState
+            // 
+            this.comboBoxState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxState.FormattingEnabled = true;
+            this.comboBoxState.Items.AddRange(new object[] {
+            "AL",
+            "AK",
+            "AZ",
+            "AR",
+            "CA",
+            "CO",
+            "CT",
+            "DE",
+            "FL",
+            "GA",
+            "HI",
+            "ID",
+            "IL",
+            "IN",
+            "IA",
+            "KS",
+            "KY",
+            "LA",
+            "ME",
+            "MD",
+            "MA",
+            "MI",
+            "MN",
+            "MS",
+            "MO",
+            "MT",
+            "NE",
+            "NV",
+            "NH",
+            "NJ",
+            "NM",
+            "NY",
+            "NC",
+            "ND",
+            "OH",
+            "OK",
+            "OR",
+            "PA",
+            "RI",
+            "SC",
+            "SD",
+            "TN",
+            "TX",
+            "UT",
+            "VT",
+            "VA",
+            "WA",
+            "WV",
+            "WI",
+            "WY"});
+            this.comboBoxState.Location = new System.Drawing.Point(146, 196);
+            this.comboBoxState.Name = "comboBoxState";
+            this.comboBoxState.Size = new System.Drawing.Size(216, 23);
+            this.comboBoxState.TabIndex = 5;
+            // 
+            // mySqlCommand1
+            // 
+            this.mySqlCommand1.CacheAge = 0;
+            this.mySqlCommand1.Connection = null;
+            this.mySqlCommand1.EnableCaching = false;
+            this.mySqlCommand1.Transaction = null;
             // 
             // AddCustomer
             // 
@@ -238,9 +279,9 @@ namespace Software2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonExit;
             this.ClientSize = new System.Drawing.Size(384, 461);
+            this.Controls.Add(this.comboBoxState);
             this.Controls.Add(this.textBoxZip);
             this.Controls.Add(this.textBoxPhone);
-            this.Controls.Add(this.textBoxCountry);
             this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.comboBoxActive);
             this.Controls.Add(this.buttonExit);
@@ -250,10 +291,8 @@ namespace Software2
             this.Controls.Add(this.labelZip);
             this.Controls.Add(this.labelCountry);
             this.Controls.Add(this.labelCity);
-            this.Controls.Add(this.labelAdd2);
             this.Controls.Add(this.labelAdd1);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.textBoxAdd2);
             this.Controls.Add(this.textBoxAdd1);
             this.Controls.Add(this.textBoxCusName);
             this.Controls.Add(this.labelMain);
@@ -278,17 +317,16 @@ namespace Software2
         private System.Windows.Forms.Label labelZip;
         private System.Windows.Forms.Label labelCountry;
         private System.Windows.Forms.Label labelCity;
-        private System.Windows.Forms.Label labelAdd2;
         private System.Windows.Forms.Label labelAdd1;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.TextBox textBoxAdd2;
         private System.Windows.Forms.TextBox textBoxAdd1;
         private System.Windows.Forms.TextBox textBoxCusName;
         private System.Windows.Forms.Label labelMain;
         private System.Windows.Forms.ComboBox comboBoxActive;
         private System.Windows.Forms.TextBox textBoxCity;
-        private System.Windows.Forms.TextBox textBoxCountry;
         private System.Windows.Forms.MaskedTextBox textBoxPhone;
         private System.Windows.Forms.TextBox textBoxZip;
+        private System.Windows.Forms.ComboBox comboBoxState;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
     }
 }

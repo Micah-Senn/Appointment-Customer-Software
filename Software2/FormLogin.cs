@@ -77,7 +77,7 @@ namespace Software2
                 new FormControl().Show();
                 this.Hide();
             }
-            else if (textBoxUser.Text == "micahsenn" && textBoxPass.Text == "password")
+            else if (textBoxUser.Text == "admin" && textBoxPass.Text == "admin")
             {
                 userId = 2;
                 new FormControl().Show();
@@ -100,8 +100,6 @@ namespace Software2
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            textBoxUser.Text = "test";
-            textBoxPass.Text = "test";
         }
 
         private void textBoxUser_TextChanged(object sender, EventArgs e)

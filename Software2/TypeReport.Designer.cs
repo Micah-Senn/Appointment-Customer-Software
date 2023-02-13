@@ -239,11 +239,12 @@ namespace Software2
             // 
             this.labelMain.AutoSize = true;
             this.labelMain.Font = new System.Drawing.Font("Segoe UI", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.labelMain.Location = new System.Drawing.Point(119, 9);
+            this.labelMain.Location = new System.Drawing.Point(149, 9);
             this.labelMain.Name = "labelMain";
-            this.labelMain.Size = new System.Drawing.Size(259, 28);
+            this.labelMain.Size = new System.Drawing.Size(167, 28);
             this.labelMain.TabIndex = 13;
-            this.labelMain.Text = "Appointment Type Report";
+            this.labelMain.Text = "Job Type Report";
+            this.labelMain.Click += new System.EventHandler(this.labelMain_Click);
             // 
             // buttonExit
             // 

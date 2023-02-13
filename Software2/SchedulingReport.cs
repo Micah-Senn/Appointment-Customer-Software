@@ -26,7 +26,7 @@ namespace Software2
         {
             MySqlConnection con = SQL.GetConnection();
 
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
+            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', car AS 'Vehicle', type AS 'Type', " +
                 "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE userId = 1";
             MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
@@ -38,7 +38,7 @@ namespace Software2
         {
             MySqlConnection con = SQL.GetConnection();
 
-            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', description AS 'Description', type AS 'Type', " +
+            string sqlStringApp = "SELECT appointmentId AS 'Appointment ID', userId AS 'User ID', customerId AS 'Customer ID', car AS 'Vehicle', type AS 'Type', " +
                 "start AS 'Start Time', end AS 'End Time' FROM appointment WHERE userId = 2";
             MySqlCommand cmda = new MySqlCommand(sqlStringApp, con);
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);

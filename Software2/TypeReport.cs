@@ -36,7 +36,7 @@ namespace Software2
             var tag = checkedButton.Tag;
             MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT COUNT(DISTINCT type) AS 'Type Count' FROM appointment WHERE MONTH(start) = {tag};";
+            cmd.CommandText = $"SELECT type AS 'Job Type', COUNT(*) AS 'Job Count' FROM appointment WHERE MONTH(start) = {tag} GROUP BY type;";
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
@@ -46,6 +46,11 @@ namespace Software2
         private void TypeReport_Load(object sender, EventArgs e)
         {
             DisplayDGV();
+        }
+
+        private void labelMain_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -60,9 +60,8 @@ namespace Software2
         {
             if (string.IsNullOrEmpty(textBoxCusName.Text) ||
                 string.IsNullOrEmpty(textBoxAdd1.Text) ||
-                string.IsNullOrEmpty(textBoxAdd2.Text) ||
                 string.IsNullOrEmpty(textBoxCity.Text) ||
-                string.IsNullOrEmpty(textBoxCountry.Text) ||
+                string.IsNullOrEmpty(comboBoxState.Text) ||
                 string.IsNullOrEmpty(textBoxZip.Text) ||
                 string.IsNullOrEmpty(textBoxPhone.Text) ||
                 (comboBoxActive.SelectedItem == null))
@@ -75,12 +74,8 @@ namespace Software2
                 MessageBox.Show("Please enter a valid zip code", "Invalid entry");
                 textBoxZip.Text = textBoxZip.Text.Remove(textBoxZip.Text.Length - 1);
             }
-            Country country = new Country(textBoxCountry.Text);
-            City city = new City(textBoxCity.Text);
-            Address addr = new Address(textBoxAdd1.Text, textBoxAdd2.Text, textBoxZip.Text, textBoxPhone.Text);
+            Address addr = new Address(textBoxAdd1.Text, textBoxZip.Text, textBoxCity.Text, comboBoxState.Text,  textBoxPhone.Text);
             Customer cus = new Customer(textBoxCusName.Text, comboBoxActive.SelectedIndex);
-            DbCountry.AddCountry(country);
-            DbCity.AddCity(city);
             DbAddress.AddAddress(addr);
             DbCustomer.AddCustomer(cus);
             _parent.DisplayCus();
@@ -98,6 +93,10 @@ namespace Software2
             }
         }
 
+        private void labelCountry_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 

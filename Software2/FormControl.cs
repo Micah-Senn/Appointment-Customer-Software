@@ -28,7 +28,7 @@ namespace Software2
                 TimeSpan nowSubStart = now - start;
                 if (nowSubStart.TotalMinutes >= -15 && nowSubStart.TotalMinutes < 1)
                 {
-                    MessageBox.Show($"You have a meeting with {row.Cells[2].Value} at {row.Cells[6].Value}.", "Appointment Reminder");
+                    MessageBox.Show($" {row.Cells[2].Value} has an appointment at {row.Cells[6].Value}.", "Appointment Reminder");
                 }
             }
         }
@@ -40,7 +40,7 @@ namespace Software2
         public void DisplayDGVApp()
         {
             MySqlConnection conn = SQL.GetConnection();
-            string sqlStringApp = "SELECT appointment.appointmentId AS 'Appointment ID', appointment.userId AS 'User ID', customer.customerName AS 'Customer Name', appointment.customerId AS 'Customer ID', appointment.description AS 'Description', appointment.type AS 'Type', appointment.start AS 'Start Time', appointment.end AS 'End Time' FROM appointment" +
+            string sqlStringApp = "SELECT appointment.appointmentId AS 'Appointment ID', appointment.userId AS 'User ID', customer.customerName AS 'Customer Name',  appointment.car AS 'Vehicle', appointment.type AS 'Type', appointment.start AS 'Start Time', appointment.end AS 'End Time' FROM appointment" +
                 " INNER JOIN customer ON appointment.customerId=customer.customerId";
             MySqlCommand cmda = new MySqlCommand(sqlStringApp, conn);
             MySqlDataAdapter adpa = new MySqlDataAdapter(cmda);
@@ -71,11 +71,9 @@ namespace Software2
         }
         public void DisplayCus()
         {
-            string CusQuery = "SELECT customer.customerId AS 'Customer ID', customer.customerName AS 'Customer Name', customer.addressId AS 'Address ID', city.cityID AS 'City ID', country.countryId AS 'Country ID', " +
+            string CusQuery = "SELECT customer.customerId AS 'Customer ID', customer.addressId AS 'Address ID', customer.customerName AS 'Customer Name', address.address AS 'Address'," +
                "address.phone AS 'Phone Number', customer.active AS Active FROM customer " +
-               "LEFT JOIN address ON customer.addressId = address.addressId " +
-               "LEFT JOIN city ON address.cityId = city.cityId " +
-               "LEFT JOIN country ON city.countryId = country.countryId";
+               "LEFT JOIN address ON customer.addressId = address.addressId";
             DisplayDGV(CusQuery, CustomersGridView);
         }
 
@@ -125,14 +123,10 @@ namespace Software2
             else
             {
                 string CusID = CustomersGridView.CurrentRow.Cells[0].Value.ToString();
-                string AddrID = CustomersGridView.CurrentRow.Cells[2].Value.ToString();
-                string CityID = CustomersGridView.CurrentRow.Cells[3].Value.ToString();
-                string CountryID = CustomersGridView.CurrentRow.Cells[4].Value.ToString();
+                string AddrID = CustomersGridView.CurrentRow.Cells[1].Value.ToString();
                 ModCustomer modcus = new ModCustomer(this);
                 modcus.CusId = CusID;
                 modcus.AddrId = AddrID;
-                modcus.CityId = CityID;
-                modcus.CountryId = CountryID;
                 modcus.Show();
             }
            
@@ -179,9 +173,7 @@ namespace Software2
             if (confirmDelete == DialogResult.OK && CustomersGridView.Rows.Count > 0)
             {
                 DbCustomer.DeleteCustomer(CustomersGridView.CurrentRow.Cells[0].Value.ToString());
-                DbAddress.DeleteAddress(CustomersGridView.CurrentRow.Cells[2].Value.ToString());
-                DbCity.DeleteCity(CustomersGridView.CurrentRow.Cells[3].Value.ToString());
-                DbCountry.DeleteCountry(CustomersGridView.CurrentRow.Cells[4].Value.ToString());
+                DbAddress.DeleteAddress(CustomersGridView.CurrentRow.Cells[1].Value.ToString());
             }
             else
             {
@@ -241,7 +233,7 @@ namespace Software2
         {
             BindingSource bs = new BindingSource();
             bs.DataSource = AppointmentGridView.DataSource;
-            bs.Filter = string.Format("[Customer Name] like '{0}%' OR [Type] like '{0}%' OR [Description] like '{0}%'", textBoxSearchApp.Text);
+            bs.Filter = string.Format("[Customer Name] like '{0}%' OR [Type] like '{0}%' OR [Vehicle] like '{0}%'", textBoxSearchApp.Text);
             AppointmentGridView.DataSource = bs;
         }
     }

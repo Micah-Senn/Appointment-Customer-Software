@@ -86,9 +86,10 @@ namespace Software2
             this.labelST.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelST.Location = new System.Drawing.Point(24, 268);
             this.labelST.Name = "labelST";
-            this.labelST.Size = new System.Drawing.Size(78, 19);
+            this.labelST.Size = new System.Drawing.Size(101, 19);
             this.labelST.TabIndex = 77;
-            this.labelST.Text = "Start Time";
+            this.labelST.Text = "Appointment ";
+            this.labelST.Click += new System.EventHandler(this.labelST_Click);
             // 
             // labelET
             // 
@@ -96,9 +97,9 @@ namespace Software2
             this.labelET.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelET.Location = new System.Drawing.Point(24, 297);
             this.labelET.Name = "labelET";
-            this.labelET.Size = new System.Drawing.Size(70, 19);
+            this.labelET.Size = new System.Drawing.Size(56, 19);
             this.labelET.TabIndex = 76;
-            this.labelET.Text = "End Time";
+            this.labelET.Text = "Due by";
             // 
             // labelType
             // 
@@ -106,19 +107,20 @@ namespace Software2
             this.labelType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelType.Location = new System.Drawing.Point(24, 237);
             this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(41, 19);
+            this.labelType.Size = new System.Drawing.Size(69, 19);
             this.labelType.TabIndex = 73;
-            this.labelType.Text = "Type";
+            this.labelType.Text = "Job Type";
             // 
             // labelDesc
             // 
             this.labelDesc.AutoSize = true;
             this.labelDesc.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelDesc.Location = new System.Drawing.Point(24, 200);
+            this.labelDesc.Location = new System.Drawing.Point(24, 204);
             this.labelDesc.Name = "labelDesc";
-            this.labelDesc.Size = new System.Drawing.Size(85, 19);
+            this.labelDesc.Size = new System.Drawing.Size(56, 19);
             this.labelDesc.TabIndex = 70;
-            this.labelDesc.Text = "Description";
+            this.labelDesc.Text = "Vehicle";
+            this.labelDesc.Click += new System.EventHandler(this.labelDesc_Click);
             // 
             // labelCusID
             // 
@@ -134,7 +136,7 @@ namespace Software2
             // 
             this.labelUserID.AutoSize = true;
             this.labelUserID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelUserID.Location = new System.Drawing.Point(24, 138);
+            this.labelUserID.Location = new System.Drawing.Point(24, 139);
             this.labelUserID.Name = "labelUserID";
             this.labelUserID.Size = new System.Drawing.Size(57, 19);
             this.labelUserID.TabIndex = 67;
@@ -144,15 +146,17 @@ namespace Software2
             // 
             this.labelAppID.AutoSize = true;
             this.labelAppID.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAppID.Location = new System.Drawing.Point(24, 109);
+            this.labelAppID.Location = new System.Drawing.Point(24, 105);
             this.labelAppID.Name = "labelAppID";
             this.labelAppID.Size = new System.Drawing.Size(115, 19);
             this.labelAppID.TabIndex = 66;
             this.labelAppID.Text = "Appointment ID";
+            this.labelAppID.Click += new System.EventHandler(this.labelAppID_Click);
             // 
             // dateTimePickerET
             // 
-            this.dateTimePickerET.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerET.CustomFormat = "MM\'/\'dd\'/\'yyyy hh\':\'mm tt";
+            this.dateTimePickerET.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerET.Location = new System.Drawing.Point(147, 297);
             this.dateTimePickerET.Name = "dateTimePickerET";
             this.dateTimePickerET.Size = new System.Drawing.Size(216, 23);
@@ -160,7 +164,8 @@ namespace Software2
             // 
             // dateTimePickerST
             // 
-            this.dateTimePickerST.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerST.CustomFormat = "MM\'/\'dd\'/\'yyyy hh\':\'mm tt";
+            this.dateTimePickerST.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerST.Location = new System.Drawing.Point(147, 268);
             this.dateTimePickerST.Name = "dateTimePickerST";
             this.dateTimePickerST.Size = new System.Drawing.Size(216, 23);

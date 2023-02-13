@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Software2.Database;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,27 +10,12 @@ namespace Software2
 {
     class DbAddress
     {
-        public static MySqlConnection GetConnection()
-        {
-            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
-            MySqlConnection conn = new MySqlConnection(sql);
-            try
-            {
-                conn.Open();
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Connection not established." + ex.Message);
-
-            }
-            return conn;
-        }
+      
         public static int getID(string id, string table)
         {
             string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
 
-            MySqlConnection conn = new MySqlConnection(sql);
-            conn.Open();
+            MySqlConnection conn = SQL.GetConnection();
             string query = $"SELECT max({id}) FROM {table}";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -49,15 +35,14 @@ namespace Software2
         public static void AddAddress(Address addr)
         {
             int addressId = getID("addressId", "address") + 1;
-            int cityId = getID("cityId", "city");
-            string sql = "INSERT INTO address VALUES (@addressId, @address, @address2, @cityId, @postalCode, @phone, NULL, NULL, NULL, NULL)";
-            MySqlConnection conn = GetConnection();
+            string sql = "INSERT INTO address VALUES (@addressId, @address, @city, @state, @postalCode, @phone, NULL, NULL, NULL, NULL)";
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@addressId", MySqlDbType.VarChar).Value = addressId;
             cmd.Parameters.Add("@address", MySqlDbType.VarChar).Value = addr.address;
-            cmd.Parameters.Add("@address2", MySqlDbType.VarChar).Value = addr.address2;
-            cmd.Parameters.Add("@cityId", MySqlDbType.VarChar).Value = cityId;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = addr.city;
+            cmd.Parameters.Add("@state", MySqlDbType.VarChar).Value = addr.state;
             cmd.Parameters.Add("@postalCode", MySqlDbType.VarChar).Value = addr.postalCode;
             cmd.Parameters.Add("@phone", MySqlDbType.VarChar).Value = addr.phone;
 
@@ -75,12 +60,13 @@ namespace Software2
 
         public static void UpdateAddress(Address addr, string id)
         {
-            string sql = "UPDATE address SET address = @address, address2 = @address2, postalCode = @postalCode, phone = @phone WHERE addressId = @addressId";
-            MySqlConnection conn = GetConnection();
+            string sql = "UPDATE address SET address = @address, city = @city, state = @state, postalCode = @postalCode, phone = @phone WHERE addressId = @addressId";
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@address", MySqlDbType.VarChar).Value = addr.address;
-            cmd.Parameters.Add("@address2", MySqlDbType.VarChar).Value = addr.address2;
+            cmd.Parameters.Add("@city", MySqlDbType.VarChar).Value = addr.city;
+            cmd.Parameters.Add("@state", MySqlDbType.VarChar).Value = addr.state;
             cmd.Parameters.Add("@postalCode", MySqlDbType.VarChar).Value = addr.postalCode;
             cmd.Parameters.Add("@phone", MySqlDbType.VarChar).Value = addr.phone;
             cmd.Parameters.Add("@addressId", MySqlDbType.VarChar).Value = id;
@@ -101,7 +87,7 @@ namespace Software2
         public static void DeleteAddress(string id)
         {
             string sql = "DELETE FROM address WHERE addressId = @addressId";
-            MySqlConnection conn = GetConnection();
+            MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@addressId", MySqlDbType.Int32).Value = id;

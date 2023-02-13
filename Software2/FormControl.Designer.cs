@@ -154,7 +154,7 @@ namespace Software2
             this.buttonType.Name = "buttonType";
             this.buttonType.Size = new System.Drawing.Size(176, 29);
             this.buttonType.TabIndex = 8;
-            this.buttonType.Text = "Appointment Type Report";
+            this.buttonType.Text = "Job Type Report";
             this.buttonType.UseVisualStyleBackColor = true;
             this.buttonType.Click += new System.EventHandler(this.buttonType_Click);
             // 

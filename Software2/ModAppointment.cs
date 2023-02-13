@@ -28,7 +28,7 @@ namespace Software2
             textBoxAppId.Text = this.AppointmentId;
             string getUserId = ($"SELECT userId FROM appointment WHERE appointmentId = ({this.AppointmentId})");
             string getCusId = ($"SELECT customerId FROM appointment WHERE appointmentId = ({this.AppointmentId})");
-            string getDesc = ($"SELECT description FROM appointment WHERE appointmentId = ({this.AppointmentId})");
+            string getDesc = ($"SELECT car FROM appointment WHERE appointmentId = ({this.AppointmentId})");
             string getType = ($"SELECT type FROM appointment WHERE appointmentId = ({this.AppointmentId})");
             string getSt = ($"SELECT start FROM appointment WHERE appointmentId = ({this.AppointmentId})");
             string getEt = ($"SELECT end FROM appointment WHERE appointmentId = ({this.AppointmentId})");
@@ -43,6 +43,9 @@ namespace Software2
         {
             DateTime startTime = dateTimePickerST.Value;
             DateTime endTime = dateTimePickerET.Value;
+            var CustomerId = textBoxCusId.Text;
+            string getCusId = ($"SELECT customerId FROM customer WHERE customerId = ({CustomerId})");
+            string result = SQL.getSQL(getCusId);
             bool overlap = DbAppointment.OverlapMod(dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime(), this.AppointmentId);
             if (
                string.IsNullOrEmpty(textBoxUserId.Text) ||
@@ -82,6 +85,12 @@ namespace Software2
             {
                 MessageBox.Show("Appointment already scheduled for this time.", "Appointment Error");
             }
+
+            else if (result == null)
+            {
+                MessageBox.Show("Customer ID not found, please enter a valid customer ID.", "Invalid entry");
+                return;
+            }
             else
             {
                 Appointment app = new Appointment(textBoxCusId.Text, textBoxUserId.Text, textBoxDesc.Text, textBoxType.Text, dateTimePickerST.Value.ToUniversalTime(), dateTimePickerET.Value.ToUniversalTime());
@@ -104,6 +113,21 @@ namespace Software2
         }
 
         private void dateTimePickerST_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelST_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelDesc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAppID_Click(object sender, EventArgs e)
         {
 
         }

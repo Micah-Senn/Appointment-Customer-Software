@@ -8,16 +8,16 @@ namespace Software2
     {
         public int addressId { get; set; }
         public string address { get; set; }
-        public string address2 { get; set; }
-        public int cityId { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
         public string postalCode { get; set; }
         public string phone { get; set; }
 
-        public Address( string address, string address2, string postalCode, string phone)
+        public Address( string address, string city, string state, string postalCode, string phone)
         {
             this.address = address;
-            this.address2 = address2;
-            //this.cityId = cityId;
+            this.city = city;
+            this.state = state;
             this.postalCode = postalCode;
             this.phone = phone;
         }

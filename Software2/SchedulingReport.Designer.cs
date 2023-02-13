@@ -73,9 +73,9 @@ namespace Software2
             this.labelMain.Font = new System.Drawing.Font("Segoe UI", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.labelMain.Location = new System.Drawing.Point(387, 9);
             this.labelMain.Name = "labelMain";
-            this.labelMain.Size = new System.Drawing.Size(295, 28);
+            this.labelMain.Size = new System.Drawing.Size(293, 28);
             this.labelMain.TabIndex = 104;
-            this.labelMain.Text = "Consultant Scheduling Report";
+            this.labelMain.Text = "Technician Scheduling Report";
             // 
             // comboBoxUsers
             // 
