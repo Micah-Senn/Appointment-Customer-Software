@@ -47,7 +47,7 @@ namespace Software2.Database
         }
         public static MySqlConnection GetConnection()
         {
-            string sql = "datasource=localhost;Port=3306;Username=sqlUser;Password=Passw0rd!;Database=client_schedule";
+            string sql = "datasource=localhost;Port=3306;Username=root;Password=Xmen1029$;Database=software2";
             MySqlConnection conn = new MySqlConnection(sql);
             try
             {

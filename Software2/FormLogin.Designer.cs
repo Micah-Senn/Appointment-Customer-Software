@@ -44,6 +44,7 @@ namespace Software2
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(460, 23);
             this.textBoxUser.TabIndex = 0;
+            this.textBoxUser.TextChanged += new System.EventHandler(this.textBoxUser_TextChanged);
             // 
             // textBoxPass
             // 

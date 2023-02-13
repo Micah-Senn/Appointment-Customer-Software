@@ -36,7 +36,9 @@ namespace Software2
         {
             int appointmentId = getID("appointmentId", "appointment") + 1;
             MySqlConnection conn = SQL.GetConnection();
-            string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, 'not needed', @description, 'not needed', 'not needed', @type, 'not needed', @start, @end, @now, 'not needed', @now, 'not needed')";
+
+            string sql = "INSERT INTO appointment VALUES (@appointmentId, @customerId, @userId, NULL, @description, NULL, NULL, @type, NULL, @start, @end, NULL, NULL, NULL, NULL)";
+
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@appointmentId", MySqlDbType.Int16).Value = appointmentId;

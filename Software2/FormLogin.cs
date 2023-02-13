@@ -126,6 +126,11 @@ namespace Software2
         private void FormLogin_Load(object sender, EventArgs e)
         {
         }
+
+        private void textBoxUser_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
         
 }
