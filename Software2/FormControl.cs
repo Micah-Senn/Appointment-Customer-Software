@@ -26,7 +26,7 @@ namespace Software2
                 DateTime start = DateTime.Parse(row.Cells[6].Value.ToString()).ToUniversalTime();
                 DateTime now = DateTime.UtcNow;
                 TimeSpan nowSubStart = now - start;
-                if (nowSubStart.TotalMinutes >= -15 && nowSubStart.TotalMinutes < 1)
+                if (nowSubStart.TotalMinutes >= -15 && nowSubStart.TotalMinutes < 1 && FormLogin.userId == Int32.Parse(row.Cells[1].Value.ToString()))
                 {
                     MessageBox.Show($"You have a meeting with {row.Cells[2].Value} at {row.Cells[6].Value}.", "Appointment Reminder");
                 }
@@ -175,7 +175,14 @@ namespace Software2
             {
                 return;
             }
-
+            foreach (DataGridViewRow row in AppointmentGridView.Rows)
+            {
+                if (CustomersGridView.CurrentRow.Cells[0].Value.ToString() == row.Cells[3].Value.ToString())
+                {
+                    MessageBox.Show("Cannot remove a customer with an appointment", "Appointment error");
+                    return;
+                }
+            }
             if (confirmDelete == DialogResult.OK && CustomersGridView.Rows.Count > 0)
             {
                 DbCustomer.DeleteCustomer(CustomersGridView.CurrentRow.Cells[0].Value.ToString());

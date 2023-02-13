@@ -130,6 +130,7 @@ namespace Software2
             this.labelDesc.Size = new System.Drawing.Size(85, 19);
             this.labelDesc.TabIndex = 17;
             this.labelDesc.Text = "Description";
+            this.labelDesc.Click += new System.EventHandler(this.labelDesc_Click);
             // 
             // labelType
             // 

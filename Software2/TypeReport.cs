@@ -36,7 +36,7 @@ namespace Software2
             var tag = checkedButton.Tag;
             MySqlConnection conn = SQL.GetConnection();
             MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = $"SELECT COUNT(DISTINCT type) AS 'Type Count' FROM appointment WHERE MONTH(start) = {tag};";
+            cmd.CommandText = $"SELECT DISTINCT type AS 'Type', COUNT(*) AS 'Type Count' FROM appointment WHERE MONTH(start) = {tag} GROUP BY type;";
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
